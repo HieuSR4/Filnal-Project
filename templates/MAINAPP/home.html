@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shippori+Antique+B1&family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700&family=Playfair+Display&family=Abril+Fatface&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Italiana&family=Rasa:wght@300;400;500;600;700&family=Bodoni+Moda:ital,wght@0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Codystar:wght@300;400&family=Comfortaa:wght@300;400;500;600;700&family=Righteous&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body onload="load()"> <!-- onload="load()" -->
+<div id="loading" style="width:100%;height:100vh;z-index:40000;background:#fff url({% static 'images/load2.svg'%}) no-repeat center;position:fixed;">
+  <br>
+  <!-- <p style="text-align:center;font-size:16px;font-weight:700;color:black;margin:6px;font-family: 'Shippori Antique B1', sans-serif;"></p>
+  <p style="font-size:11px;font-weight:400;color:gray ;font-family: 'Roboto', sans-serif;text-align:center;margin-bottom:0px;"></p>
+  <p style="font-size:11px;font-weight:400;color:black;font-family: 'Roboto', sans-serif;text-align:center;margin-bottom:0px;"></p> -->
+
+</div>
+
+
+    <nav class="navbar  navbar-expand-lg navbar-light fixed-top navbackdrop" style="justify-content:center;background:rgba(255,255,255,0.8);border-bottom:1px solid #D7DBDD  ;margin-right:auto;margin-left:auto;">
+      <img class=""src="{% static 'images/logo4.png'%}" alt="" style="width:35px;">
+    </nav>
+
+
+<nav class=" navbar  navbar-expand-lg navbar-light" style="padding:2px;background:white; margin-right:auto;margin-left:auto;padding:53px 15px 2px 15px;border-bottom:1px solid #D7DBDD  ;">
+
+<button  style="font-size:12px;"class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse " id="navbarSupportedContent" >
+  <ul class="navbar-nav" style="width:100%;">
+    <li class="nav-item "><a class="nav-link navbttn" href="{% url 'home' %}" style="font-size: 18px;color:#0074FF;padding:2px;"><i class="bi bi-house-door-fill"></i> </a></li>
+    <li class="nav-item "><a class="nav-link navbttn" href="{% url 'diagnosistools' %}" style="font-size: 13px;font-family: 'Roboto', sans-serif;color:#1C2833;"><b style="font-weight:700;">Chẩn đoán</b></a></li>
+            <li class="nav-item "><a class="nav-link navbttn" href="{% url 'diet_plan' %}" style="font-size: 13px;font-family: 'Roboto', sans-serif;color:#1C2833;"><b style="font-weight:700;">Lập kế hoạch ăn uống</b></a></li>
+    <li class="nav-item "><a class="nav-link navbttn" href="{% url 'mentalhealth' %}" style="font-size: 13px;font-family: 'Roboto', sans-serif;color:#1C2833;"><b style="font-weight:700;">Sức khỏe tâm thần</b></a></li>
+    <li class="nav-item "><a class="nav-link navbttn" href="{% url 'ASDdiagnosis' %}" style="font-size: 13px;font-family: 'Roboto', sans-serif;color:#1C2833;"><b style="font-weight:700;">Chẩn đoán ASD</b></a></li>
+        <li class="nav-item "><a class="nav-link navbttn" href="{% url 'article' %}" style="font-size: 13px;font-family: 'Roboto', sans-serif;color:#1C2833;"><b style="font-weight:700;">Tin tức</b></a></li>
+    <li class="nav-item "><a class="nav-link navbttn" href="{% url 'about' %}" style="font-size: 13px;font-family: 'Roboto', sans-serif;color:#1C2833;"><b style="font-weight:700;">Giới thiệu</b></a></li>
+    <li class="nav-item "><a class="nav-link navbttn" href="{% url 'rating' %}" style="font-size: 13px;font-family: 'Roboto', sans-serif;color:#1C2833;"><b style="font-weight:700;">Đánh giá</b></a></li>
+    <li class="nav-item "><a class="nav-link navbttn" href="{% url 'healthcareexperts' %}" style="font-size: 12.5px;font-family: 'Roboto', sans-serif;color:#1C2833;"><b style="font-weight:700;">Liên hệ bác sĩ</b></a></li>
+  </ul>
+  <div style="margin-left:auto">
+    <form class="form-inline"  method="get" action="/search">
+    <div class="input-group" style="border-radius:50px;padding:0px;width:300px">
+    <input class="form-control searchbar" type="search" name="query" id="query" placeholder="Tìm kiếm"
+    style="background:transparent;border:0px;padding:10px;margin:0px;font-size:11px;border-radius:50px;border:1px solid #909497;color:black;">
+    <span class="input-group-append">
+    <button class="searchbutton" type="submit" style="border-radius:50px;border:0px;font-size: 15px;background:transparent;margin-right:10px;margin-left:5px;color:#626567;"><i class="bi bi-search"></i></button>
+    </span>
+      </div>
+    </form>
+
+  </div>
+</div>
+<div style="margin-left:auto;">
+  {% if user.is_authenticated %}
+
+<a class=" navbttn" href="{% url 'accounts' %}" style="font-size: 13px;color:#1C2833;text-decoration:none;"><b style="font-weight:700;"><i class="bi bi-person-circle"></i> Tài khoản &nbsp</b></a>
+<a class="btn btn-outline-primary" href="{% url 'logout' %}"style="border-radius:30px;border-width:1px;font-size:14px;margin:auto;font-weight:600;padding:4px 8px 4px 8px">Đăng xuất</a>
+
+      {% else %}
+      <label class="nav-item "><a class="nav-link navbttn" href="{% url 'user_login' %}" style="font-size: 14px;color:black;"><i class="bi bi-person-circle"></i> <b  style="font-weight:700;">Đăng nhập </b></a></label>
+      <a class="btn btn-primary" href="{% url 'register' %}" style="border-radius:30px;font-size:12px;margin:auto;margin-right:10px;font-weight:600;padding:4px 10px 4px 10px;">Đăng ký</a>
+
+      {% endif %}
+</div>
+
+</nav>
+  {% block content %}
+
+<div class="bground1">
+  <div class="sharp" style="background-image:url({% static 'images/img16.png'%});background-size:cover;background-repeat: no-repeat;background-attachment:fixed;background-position:center;width:100%;">
+    <br><br>
+    <div class="container" style="margin-left:auto;margin-right:auto;position:relative;">
+      <p style="font-size:50px;font-weight:500;color:black;font-family: 'Roboto', sans-serif;text-align:center;margin:0px">Hệ thống chăm sóc sức khỏe dựa trên AI</p>
+
+    <div class="row">
+      <div class="col-xl-9 col-lg-12 col-md-12" style="display:flex;flex-wrap:wrap;margin-left:auto;margin-right:auto;">
+        <div class="" style="width:100%;">
+          <div class="row" data-aos="zoom-in">
+           <div class="col-lg-4 col-md-6 col-sm-6 col-12 text-center" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+            <div class="" style="width:100%;padding:30px;background:rgb(28, 28, 28);border-radius:20px;border:1px solid rgb(41, 41, 41);">
+              <p style="color:white;font-size:25px;"><i class="bi bi-bag-plus"></i></p>
+             <p style="color:white;font-size:16px;font-weight:500;margin:0px;font-family: 'Roboto', sans-serif;">Chẩn đoán bệnh</p>
+             <hr color="#191919">
+             <p class="statsgradient" style="color:rgb(235, 235, 235);font-size:11px;font-weight:400;margin:0px;">Thông qua các công cụ chẩn đoán toàn diện các bệnh không lây nhiễm bào gồm: CVD, tiểu đường, bệnh gan, khối u não.</p>
+             <p  style="text-align:center;"><a  href="{% url 'diagnosistools'  %}" style="text-align:center;font-size:12px;border:0px;">Công cụ chẩn đoán  <i class="bi bi-chevron-right"></i></a></p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6 col-12 text-center" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+            <div class="" style="width:100%;padding:30px;background:rgb(28,28,28);border-radius:20px;border:1px solid rgb(41, 41, 41);">
+              <p style="color:white;font-size:25px;"><i class="bi bi-cup-straw"></i></p>
+             <p style="color:white;font-size:16px;font-weight:500;margin:0px;font-family: 'Roboto', sans-serif;">Dinh dưỡng cá nhân hóa</p>
+             <hr color="#191919">
+             <p class="statsgradient" style="color:rgb(235, 235, 235);font-size:11px;font-weight:400;margin:0px;">Công cụ lập kế hoạch ăn uống được hỗ trợ bởi AI, điều chỉnh kế hoạch bữa ăn theo nhu cầu cá nhân.</p>
+             <p  style="text-align:center;"><a  href="{% url 'diet_plan'  %}" style="text-align:center;font-size:12px;border:0px;">Công cụ lập kế hoạch ăn uống  <i class="bi bi-chevron-right"></i></a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-sm-6 col-12 text-center" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+            <div class="" style="width:100%;padding:30px;background:rgb(28,28,28);border-radius:20px;border:1px solid rgb(41, 41, 41);">
+              <p style="color:white;font-size:25px;"><i class="bi bi-emoji-smile"></i></p>
+             <p style="color:white;font-size:16px;font-weight:500;margin:0px;font-family: 'Roboto', sans-serif;">Chẩn đoán sức khỏe tâm thần và ASD</p>
+             <hr color="#191919">
+             <p class="statsgradient" style="color:rgb(235, 235, 235);font-size:11px;font-weight:400;margin:0px;">Hệ thống cung cấp công cụ chẩn đoán rối loạn phổ tự kỷ và sức khỏe tâm thần.</p>
+             <label  style="text-align:center;">
+              <a  href="{% url 'mentalhealth'  %}" style="text-align:center;font-size:12px;border:0px;">Sức khỏe tâm thần  <i class="bi bi-chevron-right"></i></a>
+              <a  href="{% url 'ASDdiagnosis'  %}" style="text-align:center;font-size:12px;border:0px;">ASD <i class="bi bi-chevron-right"></i></a></label>
+
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6 col-sm-6 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+            <div class="" style="width:100%;padding:30px;background:rgb(28,28,28);border-radius:20px;border:1px solid rgb(41, 41, 41);">
+             <p style="color:white;font-size:16px;font-weight:500;margin:0px;font-family: 'Roboto', sans-serif;">Cải thiện chất lượng chăm sóc sức khỏe</p>
+             <hr color="#191919">
+             <p class="statsgradient" style="color:rgb(235, 235, 235);font-size:11px;font-weight:400;margin:0px;">Tận dụng sức mạnh của AI và máy học để cung cấp các thông tin hành động và chẩn đoán chính xác, mở đường cho các can thiệp y tế hiệu quả và nhắm mục tiêu hơn. Bộ công cụ chăm sóc sức khỏe tiên tiến của chúng tôi đang cách mạng hóa cách chúng ta tiếp cận việc phát hiện và chẩn đoán bệnh.</p>
+             <label  style="text-align:center;">
+              <a  href="{% url 'article'  %}" style="text-align:center;font-size:12px;border:0px;"> Tin tức <i class="bi bi-chevron-right"></i> </a>
+              <a  href="{% url 'healthcareexperts'  %}" style="text-align:center;font-size:12px;border:0px;"> Liên hệ bác sĩ <i class="bi bi-chevron-right"></i></a> </label>
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-7 col-md-12 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+            <div class="" style="width:100%;padding:0px;margin:0px">
+              <video autoplay muted loop style="width:100%;border-radius:20px;margin:0px" >
+                <source src="{% static 'images/vid15.mp4'%}" type="video/mp4">
+             </video>
+
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+   
+    </div>
+  </div>
+
+
+
+
+  <br>
+  
+   <br>
+    <div class="row">
+      <div class="col-lg-6 col-md-10 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;">
+        <div class="" style="width:100%;border:1px solid #CACFD2;padding:20px;border-radius:20px;margin-bottom:20px;" data-aos="fade-in">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-10" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:20px;">
+              <div style="width:100%;padding:10px;" data-aos="zoom-in">
+                <p style="text-align:center;color:black;font-family:'Barlow Semi Condensed',sans-serif;font-size:50px;font-weight:600;margin-bottom:0px;">01</p>
+                <p style="text-align:center;font-size:15px;color:black;font-weight:600;margin:0px;">Chẩn đoán bệnh tiểu đường</p><hr>
+                <p style="text-align:center;font-size:11px;color:#626567;margin-bottom:10px;">Được huấn luyện bằng thuật toán random forest với độ chính xác 90,4%.</p>
+                <p  style="text-align:center;"><a class="btn btn-outline-primary" href="{% url 'diabetes_risk' %}" style="border-radius:30px;border-width:1px;font-size:12px;margin:auto;font-weight:400;">Mở công cụ <i class="bi bi-chevron-double-right"></i></a></p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-10" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:20px;">
+              <div style="width:100%;padding:10px;"  data-aos="zoom-in">
+                <p style="text-align:center;color:black;font-family:'Barlow Semi Condensed',sans-serif;font-size:50px;font-weight:600;margin-bottom:0px;">02</p>
+                <p style="text-align:center;font-size:15px;color:black;font-weight:600;margin:0px;">Chẩn đoán CVD</p><hr>
+                <p style="text-align:center;font-size:11px;color:#626567;margin-bottom:10px;">Được huấn luyện bằng thuật toán random forest với độ chính xác 90.5%.</p>
+                <p  style="text-align:center;"><a class="btn btn-outline-primary" href="{% url 'cvd_prediction' %}" style="border-radius:30px;border-width:1px;font-size:12px;margin:auto;font-weight:400;">Mở công cụ <i class="bi bi-chevron-double-right"></i></a></p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-10" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:20px;">
+              <div style="width:100%;padding:10px;" data-aos="zoom-in">
+                <p style="text-align:center;color:black;font-family:'Barlow Semi Condensed',sans-serif;font-size:50px;font-weight:600;margin-bottom:0px;">03</p>
+                <p style="text-align:center;font-size:15px;color:black;font-weight:600;margin:0px;">Chẩn đoán bệnh gan</p><hr>
+                <p style="text-align:center;font-size:11px;color:#626567;margin-bottom:10px;">Được huấn luyện bằng thuật toán random forest với độ chính xác 84%.</p>
+                <p  style="text-align:center;"><a class="btn btn-outline-primary" href="{% url 'liver_diagnosis' %}" style="border-radius:30px;border-width:1px;font-size:12px;margin:auto;font-weight:400;">Mở công cụ <i class="bi bi-chevron-double-right"></i></a></p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-10" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:20px;">
+              <div style="width:100%;padding:10px;"  data-aos="zoom-in">
+                <p style="text-align:center;color:black;font-family:'Barlow Semi Condensed',sans-serif;font-size:50px;font-weight:600;margin-bottom:0px;">04</p>
+                <p style="text-align:center;font-size:15px;color:black;font-weight:600;margin:0px;">Chẩn đoán u não</p><hr>
+                <p style="text-align:center;font-size:11px;color:#626567;margin-bottom:10px;">Được huấn luyện bằng thuật toán random forest với độ chính xác 92%.</p>
+                <p  style="text-align:center;"><a class="btn btn-outline-primary" href="{% url 'detect_brain_tumor' %}" style="border-radius:30px;border-width:1px;font-size:12px;margin:auto;font-weight:400;">Mở công cụ <i class="bi bi-chevron-double-right"></i></a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-10 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;margin-bottom:20px;" data-aos="fade-in">
+        <div class="" style="width:100%;background:black;padding:20px;border-radius:20px;">
+          <br>
+          <p style="text-align:center;font-size:35px;font-weight:500;font-family: 'Roboto', sans-serif;color:white;">Bốn công cụ - Một mục tiêu</p>
+          <p class="col-lg-10"style="margin-right:auto;margin-left:auto; font-size:12px;font-weight:400;font-family: 'Roboto', sans-serif;color:#CACFD2;text-align:center;">Được tích hợp với các công cụ chẩn đoán chuyên dụng mạnh mẽ với độ chính xác trung bình là 90%. Những công cụ này được thiết kế để giảm bớt nhiệm vụ của bác sĩ và chuyên gia trong việc ra quyết định. Với các biện pháp tương tự được sử dụng để chẩn đoán, những công cụ này có thể dự đoán sự xuất hiện của bệnh trong vòng vài giây. </p>
+          <p  style="text-align:center;"><a  href="{% url 'diagnosistools'  %}" style="text-align:center;border-radius:30px;font-size:16px;font-weight:500;border:0px;"> Bắt đầu <i class="bi bi-chevron-right"></i></a></p>
+          <video autoplay muted loop style="width:100%;bottom-margin:20px;" >
+           <source src="{% static 'images/vid10.mp4'%}" type="video/mp4">
+        </video>
+        </div>
+      </div>
+
+      <div class="" style="background-color:#F2F3F4;border-radius:20px;margin:15px">
+        <div class="row">
+          <div class="col-lg-6 col-md-12"  style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10%;" data-aos="fade-right">
+            <div class="" style="width:100%">
+              <!-- <p style="font-size:18px;margin-bottom:0px;font-weight:500;color:#626567;font-family: 'Roboto', sans-serif;" >With scikit-learn</p> -->
+              <p style="font-size:35px;font-weight:500;color:black;font-family: 'Roboto', sans-serif;" >Sử dụng AI để lên kế hoạch ăn uống</p>
+              <p style="font-size:11px;margin-bottom:0px;font-weight:400;color:black;font-family: 'Roboto', sans-serif;" >Hệ thống cung cấp các kế hoạch ăn uống dựa trên tình trạng sức khỏe của bạn cùng với phân tích chi tiết về giá trị dinh dưỡng của chế độ ăn uống.</p>
+              <br>
+              <p ><a class="btn btn-outline-primary" href="{% url 'diet_plan' %}" style="border-radius:30px;border-width:1px;font-size:12px;margin:auto;font-weight:400;">Bắt đầu<i class="bi bi-chevron-double-right"></i></a></p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12"  style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;" data-aos="fade-in">
+            <div class="" style="width:100%;padding:10% 20% 0 20%">
+             <img class="sharp"src="{% static 'images/img5.jpg'%}" alt="" style="width:100%;border-radius:40px 40px 0px 0px;border-top:10px solid black;border-left:10px solid black;border-right:10px solid black;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+    <div class="row" style="margin:0px;margin-bottom:20px;" data-aos="fade-in">
+      <div class="col-lg-6 col-md-10 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding: 20px;">
+        <div class="" style="padding:20px;">
+          <p style="margin:0px;font-size:40px;font-weight:600;font-family: 'Roboto', sans-serif;color:rgb(117, 117, 117);">Chẩn đoán</p>
+          <p style="font-size:25px;font-weight:400;font-family: 'Roboto', sans-serif;color:black">Rối loạn phổ tự kỷ ở trẻ.</p>
+          <p style="font-size:13px;margin-bottom:0px;font-weight:400;color:black;font-family: 'Roboto', sans-serif;" >Tại đây, bạn có thể kiểm tra xem trẻ mới biết đi của mình trong độ tuổi từ 1-3 tuổi có các triệu chứng ASD hay không.</p>
+          <br>
+          <p ><a class="btn btn-primary" href="{% url 'ASDdiagnosis' %}" style="border-radius:30px;border-width:1px;font-size:12px;margin:auto;font-weight:400;">Bắt đầu<i class="bi bi-chevron-double-right"></i></a></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-5 col-sm-9"  style="margin-left:auto;margin-right:auto;margin-bottom:20px;display:flex;flex-wrap:wrap ;padding:5px;">
+        <div class="text-center" style="width:100%;border-radius:20px;padding:27px;background:rgb(230, 230, 230)">
+          <!-- <img class="text-center"src="{% static 'images/logo3.png'%}" alt="" style="width:35px;margin-bottom:3px;">
+          <p style="font-size:14px;text-align:center;color:#181818;">Welcome to our comprehensive ASD diagnosis tool.</p> -->
+          <hr>
+          <p style="font-size:12px;text-align:center;color:#494949;">Tầm quan trọng của việc phát hiện và can thiệp sớm đối với trẻ mắc ASD và công nghệ học máy tiên tiến của chúng tôi nhằm mục đích hỗ trợ cha mẹ, người chăm sóc và chuyên gia chăm sóc sức khỏe trong việc xác định các đặc điểm ASD tiềm ẩn ở trẻ.</p>
+          <p style="font-size:20px;text-align:center;color:black;font-weight:500;margin:0px;">Độ chính xác</p>
+          <p style="font-size:13px;text-align:center;color:black;font-weight:500;margin:0px;">95.9%</p>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-md-5 col-sm-9"  style="margin-bottom:20px;margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;display:flex;flex-wrap:wrap ;">
+        <div class="" style="width:100%;border-radius:20px;padding:0px;background:rgb(12, 12, 12)">
+         <img class="sharp"src="{% static 'images/ASD.jpg'%}" alt="" style="width:100%;border-radius:20px;">
+        </div>
+      </div>
+      
+    </div>
+    
+    </div>
+  </div>
+  <br>
+  <div class="container">
+
+    <div class="row" id="contactus" >
+      <div class="col-lg-7 col-md-12 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+        <div class="" style="width:100%;padding:20px">
+          <div class="" data-aos="fade-in">
+            <p style="font-size:25px;color:black;font-weight:600;font-family: 'Roboto', sans-serif;margin-bottom:4px" >Khám phá tin tức</p>
+           <p  class="col-lg-9"style="padding:0px;font-size:12px;color:#626567;font-weight:400;font-family: 'Roboto', sans-serif;margin-bottom:8px;">Những bài viết chăm sóc sức khỏe hàng đầu. Khám phá những hiểu biết sâu sắc về các bệnh thông thường, triệu chứng, biện pháp phòng ngừa, thuốc men và hơn thế nữa. </p>
+           <a  href="{% url 'article'  %}" style="background:transparent;font-size:15px;margin:auto;font-weight:500;border:0px;">Khám phá ngay <i class="bi bi-chevron-right"></i></a>
+
+          </div>
+
+          <div class="row" style="margin-top:15px;" data-aos="fade-in">
+              {% for page in pages %}
+              {% if page.add_disease_to_home %}
+              <div class="col-lg-4 col-md-4 col-sm-6 col-6" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+                <div class=" flipcard" style="margin:0px;padding:5px;border-radius:20px;border:1px solid #CACFD2;">
+                   <div class="flipcard-wrap"  >
+                     <div class="card card-front" style="width:100%;background:black;border-radius:15px;">
+                          <div class="card-body" style="padding:15px;">
+                         <p style="text-align:center;font-size:14px;color:white;font-weight:600;margin:0px;">{{ page.disease_name}}</p>
+                         <p style="text-align:center;font-size:11px;color:#BFC9CA;">Posted on. {{ page.posted_on}}</p>
+                         <img src="{{ page.disease_imageURL }}"  style="width:100%;padding:5px;border-radius:15px;" >
+                         </div>
+                      </div>
+                      <div class="card card-back" style="background:black;">
+                        <div class="card-body" style="padding:15px;">
+                          <p style="text-align:center;font-size:11px;color:#BFC9CA;">{{ page.disease_caption}}</p>
+                          <a class="btn btn-outline-primary"data-product="{{ page.id }}"  href="{% url 'read_article' page.id %}" style="border-radius:30px;border-width:2px;font-size:14px;margin:auto;font-weight:700;">Đọc <i class="bi bi-chevron-double-right"></i></a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+           </div>
+
+        </div>
+      </div>
+      <div  class="col-lg-5 col-md-12 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;" >
+        <br>
+        <div class=""  style="width:100%;padding:20px;">
+          <div class="" style="padding:30px;border:1px solid #e2e6e9;" data-aos="fade-in">
+            <p style="font-size:30px;color:#b6c0c8;font-weight:500;font-family: 'Roboto', sans-serif;margin-bottom:2px;text-align:center;" >Liên hệ</p>
+            <p  style="text-align:center;padding:0px;font-size:12px;color:#b6c0c8;font-weight:400;font-family: 'Roboto', sans-serif;margin-bottom:8px;">Vui lòng liên hệ nếu có bất kỳ thắc mắc hoặc đề xuất nào. </p>
+
+
+            <form class=""  method="POST" enctype="multipart/form-data" action ="{% url 'home' %}">
+              {% csrf_token %}
+              <label for="id_reviewer_name" style="font-size:13px;font-weight:700;margin:5px;color:black;">Tên</label>
+              <input type="text" class="form-control" id ="id_reviewer_name" name="reviewer_name"  style="border:1px solid #CACFD2;border-radius:50px;font-size:13px;color:black;font-weight:500;margin-bottom:10px;" required>
+              <label for="id_reviewer_email" style="font-size:13px;font-weight:700;margin:5px;color:black;">Email</label>
+              <input type="email" class="form-control" id ="id_reviewer_email"name="reviewer_email"  style="border:1px solid #CACFD2;border-radius:50px;font-size:13px;color:black;font-weight:500;margin-bottom:10px;" required>
+              <label for="id_reviewer_message" style="font-size:13px;font-weight:700;margin:5px;color:black;">Lời nhắn</label><br>
+              <div class="text-center">
+              <textarea class="form-control" name="reviewer_message"  id="id_reviewer_message" style="width:100%;height:70px;font-size:12px;padding:5px;"></textarea>
+              </div>
+              <br>
+              {% for message in messages %}
+                <p style="text-align:center;color:green;font-size:13px">{{message}}</p>
+              {% endfor %}
+              <div class="text-center">
+                <button type="submit" class="btn btn-outline-primary" style="border-radius:50px;font-weight:400;font-size:14px;border-width:1px;padding:4px 12px 4px 12px">Gửi <i class="bi bi-chevron-double-right"></i> </button>
+              </div>
+              </form>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+</div>
+  {% endblock content %}
+
+<div class="">
+  <div class="" style="background:rgba(222, 229, 237,0.4);padding:15px;">
+    <!-- <div class="text-center">
+      <img class=""src="{% static 'images/logo3.png'%}" alt="" style="width:45px;">
+    </div> -->
+
+    <hr>
+    <div class="row col-xl-8 col-lg-10 col-md-12 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;margin-top:0px;" >
+      <div class="col-lg-3 col-md-3 col-sm-6 col-6"style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+        <div class="" style="width:100%;padding:20px;padding-top:0px;">
+          <p style="font-size:13px;color:black;font-weight:700;margin:2px;font-family: 'Roboto', sans-serif;">Đường dẫn</p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'home' %}">Trang chủ</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'article' %}">Tin tức</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'about' %}">Giới thiệu</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567;font-family: 'Roboto', sans-serif;"href="{% url 'report' %}">Báo cáo vấn đề</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567;font-family: 'Roboto', sans-serif;"href="{% url 'rating' %}">Đánh giá</a></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-6"style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+        <div class="" style="width:100%;padding:20px;padding-top:0px;">
+          <p style="font-size:13px;color:black;font-weight:700;margin:2px;font-family: 'Roboto', sans-serif;">Công cụ</p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'diabetes_risk' %}">Chẩn đoán bệnh tiểu đường</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'cvd_prediction' %}">Chẩn đoán CVD</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'liver_diagnosis' %}">Chẩn đoán bệnh gan</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'detect_brain_tumor' %}">Chẩn đoán u não</a></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-6"style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+        <div class="" style="width:100%;padding:20px;padding-top:0px;">
+          <p style="font-size:13px;color:black;font-weight:700;margin:2px;font-family: 'Roboto', sans-serif;">Công cụ AI khác</p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'diet_plan' %}">Lập kế hoạch ăn uống</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'ASDdiagnosis' %}">Chẩn đoán ASD</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'mentalhealth' %}">Sức khỏe tâm thần</a></p>
+          <!-- <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'healthcheckup' %}">Tự chẩn đoán</a></p> -->
+
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-3 col-sm-6 col-6"style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px;">
+        <div class="" style="width:100%;padding:20px;padding-top:0px;">
+          <p style="font-size:13px;color:black;font-weight:700;margin:2px;font-family: 'Roboto', sans-serif;">Tài khoản</p>
+                    <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'accounts' %}">Hồ sơ</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'user_login' %}">Đăng nhập</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'register' %}">Đăng ký</a></p>
+          <p style="font-size:11px;margin:2px;"><a style="color:#626567 ;font-family: 'Roboto', sans-serif;"href="{% url 'reset_password' %}">Đổi mật khẩu</a></p>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  <div class="" style="background:#090d10;padding:15px;">
+  <p style="text-align:center;font-size:11px;color:#A6ACAF ;font-family: 'Roboto', sans-serif;text-align:center;margin:0px;">© 2023</p>
+  </div>
+
+</div>
+  <style media="screen">
+    .navbackdrop{
+      backdrop-filter:blur(8px);
+    }
+  </style>
+
+  <style media="screen">
+      .backdrop{
+        backdrop-filter:blur(8px);
+      }
+    </style>
+  <script type="text/javascript" src="{% static 'jscript/jmain.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" integrity="sha512-d8F1J2kyiRowBB/8/pAWsqUl0wSEOkG5KATkVV4slfblq9VRQ6MyDZVxWl2tWd+mPhuCbpTB4M7uU/x9FlgQ9Q==" crossorigin="anonymous"></script>
+  <script >
+   $('.counter').counterUp({
+     delay: 10,
+     time: 4000
+  });
+  </script>
+  <script>
+  $(window).scroll(function () {
+    console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 63) {
+      $('.navbar').addClass('navbar-fixed');
+    }
+    if ($(window).scrollTop() < 64) {
+      $('.navbar').removeClass('navbar-fixed');
+    }
+  });
+  </script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+ <script>
+   AOS.init({
+     duration: 3000,
+     offset: 100
+   });
+ </script>
+ <script>
+var preloader = document.getElementById('loading');
+function load(){
+  preloader.style.display ='none';
+}
+
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+  </body>
+</html>

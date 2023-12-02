@@ -1,0 +1,209 @@
+{%  extends 'MAINAPP/home.html' %}
+{% load static %}
+{% block content %}
+<br>
+<div class="bground1 container">
+  {% if user.is_authenticated %}
+  <div class="container col-lg-6 col-md-10 text-center" style="padding:20px;width:100%">
+    <p style="font-size:40px;color:#D7DBDD;margin:5px;"><i class="bi bi-person-circle"></i></p>
+      <p style="margin:5px;font-size:18px;font-weight:500;color:black;font-family: 'Roboto', sans-serif;">Welcome {{user.first_name}} {{user.last_name }}</p>
+      <p style="font-size:12px;color:grey;font-family: 'Roboto', sans-serif;">{{user.email}}</p>
+
+      <hr  style="margin:3px;">
+    <p style="margin:5px;font-size:12px;color:grey;font-family: 'Roboto', sans-serif;">Username : <label style="color:black;font-weight:600;">{{user.username}}</label></p>
+  </div>
+  <div class="container col-lg-10" style="padding:5%;box-shadow:0px 0px 25px 0px rgba(0, 0, 0,0.15);">
+      <div class="text-center">
+      <!-- <img class=""src="{% static 'images/logo4.png'%}" alt="" style="width:50px;"> -->
+      <p style="font-size:20px;font-weight:500;color:black;font-family: 'Roboto', sans-serif;text-align:center;margin:10px;" >Hồ sơ</p>
+      </div>
+      {% if created %}
+      <hr style="margin-right:20%;margin-left:20%">
+      {% for message in messages %}
+        <p style="text-align:center;color:green;font-size:13px">{{message}}</p>
+      {% endfor %}
+      {% for i in profiles %}
+      {% if i.username == user.username %}
+      <div class="text-right">
+        <label style="font-size:11px;font-family: 'Roboto', sans-serif;color:gray" for="">Lần cập nhật mới nhất: {{i.updated_on}} &nbsp &nbsp</label><a class="btn btn-outline-dark"data-product="{{ i.id }}"  href="{% url 'update_medical_profile' i.id %}" style="border-radius:30px;border-width:1px;font-size:13px;margin:auto;font-weight:400;"><i class="bi bi-pencil-square"></i> Cập nhật</a>
+
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-6 col-md-6 " >
+          <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 "style="padding:5px">
+            <div style="padding:20px;border:1px solid #e6e6e6;border-radius:15px 0px 0px 0px;">
+              <p style="color:#3399ff;font-family:'Barlow Semi Condensed',sans-serif;font-size:30px;font-weight:600;margin-bottom:0px;">{{i.age}} <label for="" style="font-size:14px;margin-bottom:0px;"></label></p>
+              <p style="font-size:13px;font-weight:400;color:gray;font-family: 'Roboto', sans-serif;margin-bottom:0px" >Tuổi</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 "style="padding:5px">
+          <div style="padding:20px;border:1px solid #e6e6e6;border-radius:0px 15px 0px 0px">
+            <p style="color:#3399ff;font-family:'Barlow Semi Condensed',sans-serif;font-size:30px;font-weight:600;margin-bottom:0px;">{{i.blood_group}} </p>
+            <p style="font-size:13px;font-weight:400;color:gray;font-family: 'Roboto', sans-serif;margin-bottom:0px" >Nhóm máu</p>
+          </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6"style="padding:5px">
+          <div style="padding:20px;border:1px solid #e6e6e6;border-radius:0px 0px 0px 15px">
+            <p style="color:#3399ff;font-family:'Barlow Semi Condensed',sans-serif;font-size:30px;font-weight:600;margin-bottom:0px;">{{i.height}} <label for="" style="font-size:14px;margin-bottom:0px;">cm</label></p>
+            <p style="font-size:13px;font-weight:400;color:gray;font-family: 'Roboto', sans-serif;margin-bottom:0px" >Chiều cao</p>
+          </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6"style="padding:5px">
+          <div style="padding:20px;border:1px solid #e6e6e6;border-radius:0px 0px 15px 0px">
+            <p style="color:#3399ff;font-family:'Barlow Semi Condensed',sans-serif;font-size:30px;font-weight:600;margin-bottom:0px;">{{i.weight}} <label for="" style="font-size:14px;margin-bottom:0px;">kg</label></p>
+            <p style="font-size:13px;font-weight:400;color:gray;font-family: 'Roboto', sans-serif;margin-bottom:0px" >Cân nặng</p>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6" style="padding:5px 20px 5px 20px">
+          <p style="font-size:13px;font-weight:600;color:black;font-family: 'Roboto', sans-serif;margin-bottom:1px;" >Giới tính</p>
+          <p style="font-size:12px;font-weight:400;color:#3399ff;font-family: 'Roboto', sans-serif;" >{{i.gender}}</p>
+          <hr>
+          <p style="font-size:13px;font-weight:600;color:black;font-family: 'Roboto', sans-serif;margin-bottom:1px;" >Liên lạc</p>
+          <a  href="tel:{{ i.emergency_contact }}"style="font-size:12px;font-weight:400;color:#3399ff;font-family: 'Roboto', sans-serif;" ><i class="bi bi-telephone-fill"></i>&nbsp {{i.emergency_contact}}</a>
+          <hr>
+          <p style="font-size:13px;font-weight:600;color:black;font-family: 'Roboto', sans-serif;margin-bottom:1px;" >Bệnh tiểu đường</p>
+          {% if i.diabetic %}
+          <p style="font-size:12px;font-weight:400;color:#3399ff;font-family: 'Roboto', sans-serif;" >Có</p>
+          {% else %}
+          <p style="font-size:12px;font-weight:400;color:#3399ff;font-family: 'Roboto', sans-serif;" >Không</p>
+          {% endif %}
+
+
+
+
+
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+
+      {% else %}
+      <hr>
+      <div class="text-center" style="padding:3%;">
+      <p style="font-size:16px;font-weight:500;color:black;font-family: 'Roboto', sans-serif;text-align:center;margin:10px;" >Tạo ngay</p>
+      <p style="font-size:12px;color:#626567;">Không có hồ sơ y tế nào tồn tại trong tài khoản của bạn, hãy tạo hồ sơ y tế của bạn bây giờ.</p>
+      <a class="btn btn-primary" href="{% url 'create_medical_profile'%}" style="border-radius:30px;border-width:2px;font-size:14px;margin:auto;font-weight:500;padding:4px 12px 4px 12px">Tạo <i class="bi bi-chevron-double-right"></i></a>
+      </div>
+      {% endif %}
+  </div>
+
+
+
+  <br><br>
+  <p style="margin:5px;font-size:20px;font-weight:600;color:black;font-family: 'Roboto', sans-serif;text-align:center">Lịch sử chẩn đoán</p>
+  <!-- <p style="font-size:12px;color:grey;font-family: 'Roboto', sans-serif;text-align:center">Your diagnosis history along with date and results are shown below.</p> -->
+
+
+  {% if not flag1 and not flag2 and not flag3 and not flag4 %}
+  <div class="text-center">
+    <hr>
+    <p style="margin:5px;font-size:14px;font-weight:500;color: 	 #ffaa00;font-family: 'Roboto', sans-serif;text-align:center">Không tìm thấy lịch sử chẩn đoán. </p>
+    <br><br>
+  </div>
+
+  {% endif %}
+  {% if flag1 %}
+  <div style="width:100%;padding:10px;border:1px solid #D7DBDD">
+    <p style="margin:5px;font-size:16px;font-weight:500;color:black;font-family: 'Roboto', sans-serif;text-align:center">Chẩn đoán bệnh tiểu đường</p>
+    <hr>
+    <table class="table table-striped table-borderless  table-sm table-light" style="background:transparent">
+      <thead><tr style="font-family: 'Roboto', sans-serif;font-size:13px;font-weight:600;text-align:center;">
+        <td >Thời gian</td><td >Số lần mang thai</td><td >Glucose</td><td >Huyết áp</td><td>Lượng mỡ</td><td >Insulin</td><td >BMI</td><td >Tiểu sử gia đình</td><td >Tuổi</td><td >Kết quả</td>
+      </tr></thead>
+     <tbody>
+      {% for i in history1 %}
+      {% if i.username == user.username %}
+      <tr style="font-family: 'Roboto', sans-serif;font-size:12px;font-weight:400;">
+        <td >{{ i.Diagnosis_Date }} </td><td >{{ i.Pregnancies }} </td><td >{{ i.Glucose }} </td><td >{{ i.BloodPressure }} </td><td >{{ i.SkinThickness }} </td><td >{{ i.Insulin }} </td><td >{{ i.BMI}} </td><td >{{ i.DiabetesPedigreeFunction }} </td><td >{{ i.Age }} </td><td >{{ i.outcome }} <br> Rủi ro : {{ i.risk_score }} %</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <br>
+  {% endif %}
+
+  {% if flag2 %}
+  <div style="width:100%;padding:10px;border:1px solid #D7DBDD">
+    <p style="margin:5px;font-size:16px;font-weight:500;color:black;font-family: 'Roboto', sans-serif;text-align:center">Chẩn đoán bệnh tim</p>
+    <hr>
+    <table class="table table-striped table-borderless  table-sm table-light" style="background:transparent">
+      <thead><tr style="font-family: 'Roboto', sans-serif;font-size:13px;font-weight:600;text-align:center;">
+        <td >Thời gian</td><td >Tuổi</td><td >Giới tính</td><td >Loại đau ngực</td><td>Huyết áp lúc nghỉ ngơi</td><td >Cholesterol</td><td >Đường huyết lúc đói > 120 mg/dl</td><td >Kết quả điện tâm đồ lúc nghỉ ngơi</td><td >Nhịp tim</td><td >Tập thể dục gây đau thắt ngực</td><td >Oldpeak</td><td >Độ dốc</td><td >Kết quả</td>
+      </tr></thead>
+     <tbody>
+      {% for i in history2 %}
+      {% if i.username == user.username %}
+      <tr style="font-family: 'Roboto', sans-serif;font-size:12px;font-weight:400;">
+        <td >{{ i.Diagnosis_Date }} </td><td >{{ i.age }} </td><td >{{ i.sex }} </td><td >{{ i.cp }} </td><td >{{ i.trestbps }} </td><td >{{ i.chol }} </td><td >{{ i.fbs }} </td><td >{{ i.restecg}} </td><td >{{ i.thalach }} </td><td >{{ i.exang }} </td><td >{{ i.oldpeak}} </td><td >{{ i.slope }} </td><td >{{ i.outcome }} <br> Rủi ro : {{ i.risk_score }} %</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <br>
+  {% endif %}
+
+  {% if flag3 %}
+  <div style="width:100%;padding:10px;border:1px solid #D7DBDD">
+    <p style="margin:5px;font-size:16px;font-weight:500;color:black;font-family: 'Roboto', sans-serif;text-align:center">Chẩn đoán bệnh gan</p>
+    <hr>
+    <table class="table table-striped table-borderless  table-sm table-light" style="background:transparent">
+      <thead><tr style="font-family: 'Roboto', sans-serif;font-size:13px;font-weight:600;text-align:center;">
+        <td >Thời gian</td><td >Tuổi</td><td >Giới tính</td><td > Tổng lượng Bilirubin trong máu</td><td>Lượng Bilirubin trực tiếp trong máu</td><td >Alkaline Phosphotase</td><td >Alamine Aminotransferase</td><td >Aspartate Aminotransferase</td><td >Tổng lượng protein trong máu</td><td >Albumin</td><td >Tỉ lệ Albumin/Globulin</td><td >Kết quả</td>
+      </tr></thead>
+     <tbody>
+      {% for i in history3 %}
+      {% if i.username == user.username %}
+      <tr style="font-family: 'Roboto', sans-serif;font-size:12px;font-weight:400;">
+        <td >{{ i.Diagnosis_Date }} </td><td >{{ i.Age }} </td><td >{{ i.Gender }} </td><td >{{ i.Total_Bilirubin }} </td><td >{{ i.Direct_Bilirubin }} </td><td >{{ i.Alkaline_Phosphotase }} </td><td >{{ i.Alamine_Aminotransferase }} </td><td >{{ i.Aspartate_Aminotransferase}} </td><td >{{ i.Total_Protiens }} </td><td >{{ i.Albumin }} </td><td >{{ i.Albumin_and_Globulin_Ratio}} </td><td >{{ i.outcome }} <br> Rủi ro : {{ i.risk_score }} %</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <br>
+  {% endif %}
+
+  {% if flag4 %}
+  <div style="width:100%;padding:10px;border:1px solid #D7DBDD">
+    <p style="margin:5px;font-size:16px;font-weight:500;color:black;font-family: 'Roboto', sans-serif;text-align:center">Brain Tumor Diagnosis</p>
+    <hr>
+    <table class="table table-striped table-borderless  table-sm table-light" style="background:transparent">
+      <thead><tr style="font-family: 'Roboto', sans-serif;font-size:13px;font-weight:600;text-align:center;">
+        <td >Thời gian</td><td >Mean</td><td >Variance</td><td >S.D</td><td>Entropy</td><td >Skewness</td><td >Kurtosis</td><td >Contrast</td><td >Energy</td><td >ASM</td><td >Homogeneity</td><td >Dissimilarity </td><td >Corr. </td><td >Coarseness</td><td >PSNR </td><td >SSIM</td><td >MSE </td><td >DC </td><td >Results</td>
+      </tr></thead>
+     <tbody>
+      {% for i in history4 %}
+      {% if i.username == user.username %}
+      <tr style="font-family: 'Roboto', sans-serif;font-size:12px;font-weight:400;">
+        <td >{{ i.Diagnosis_Date }} </td><td >{{ i.Mean }} </td><td >{{ i.Variance }} </td><td >{{ i.StandardDeviation }} </td><td >{{ i.Entropy }} </td><td >{{ i.Skewness }} </td><td >{{ i.Kurtosis }} </td><td >{{ i.Contrast}} </td><td >{{ i.Energy }} </td><td >{{ i.ASM }} </td><td >{{ i.Homogeneity}} </td><td >{{ i.Dissimilarity }} </td><td >{{ i.Correlation }} </td><td >{{ i.Coarseness }} </td><td >{{ i.PSNR }} </td><td >{{ i.SSIM }} </td><td >{{ i.MSE }} </td><td >{{ i.DC}} </td><td >{{ i.outcome }} <br> Rủi ro : {{ i.risk_score }} %</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <br>
+  {% endif %}
+  {% else %}
+  <br><br>
+  <div class="text-center" style="padding:5%;padding-bottom:15%">
+  <p style="font-size:18px;font-weight:600;color:black;font-family: 'Roboto', sans-serif;text-align:center;margin:10px;" >User not logged In</p>
+
+  <p style="font-size:12px;color:#626567;">Please login to access your account and view your <br>medical profile and history.</p>
+  <a class="btn btn-outline-primary" href="{% url 'user_login' %}" style="border-radius:30px;border-width:2px;font-size:16px;margin:auto;font-weight:600">Log In</a>
+  </div>
+  <br><br>
+  {% endif %}
+</div>
+
+{% endblock content %}

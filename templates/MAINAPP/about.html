@@ -1,0 +1,94 @@
+{%  extends 'MAINAPP/home.html' %}
+{% load static %}
+{% block content %}
+<div class="bground1">
+  <br>
+  <div class="container">
+    <div class="sharp" style="background-image:url({% static 'images/bg1.jpg'%});background-size:cover;background-repeat: no-repeat;background-attachment:fixed;background-position:center;width:100%;padding:30px;border-radius:20px;">
+      <br><br>
+      <p class="col-xl-7 col-lg-8"style="margin: 0px auto 0px auto;font-size:40px;font-weight:500;color:white;font-family: 'Roboto', sans-serif;text-align:center;">Hệ thống chăm sóc sức khỏe dựa trên trí tuệ nhân tạo</p>
+      <br>
+      <div class="row">
+        <div class="col-xl-6 col-lg-8 col-md-10" style="display:flex;flex-wrap:wrap;margin-left:auto;margin-right:auto;">
+          <div class="backdrop" style="width:100%;padding:20px;background:rgba(0,0,0,0.5);border-radius:20px;border:2px solid  #A6ACAF">
+            <div data-aos="zoom-in">
+              <p style="color:white;font-size:25px;font-weight:500;margin:0px;text-align:center">Tại sao lại cần sử dụng trí tuệ nhân tạo trong việc chăm sóc sức khỏe</p>
+              <hr>
+              <p class="statsgradient" style="color:#F2F3F4 ;font-size:11px;font-weight:400;margin:0px;text-align:center">Trí tuệ nhân tạo (AI) đóng vai trò quan trọng trong hệ thống chăm sóc sức khỏe. Nó hỗ trợ chẩn đoán bệnh, dự báo nguy cơ mắc bệnh, cung cấp tư vấn và hướng dẫn sức khỏe, quản lý thông tin y tế, tối ưu hóa lịch trình cung cấp dịch vụ, phân tích hình ảnh y tế, cải thiện trải nghiệm bệnh nhân và hỗ trợ quyết định cho nhà cung cấp dịch vụ y tế. Điều này mang lại lợi ích lớn, từ việc phát hiện bệnh sớm đến cải thiện chất lượng chăm sóc cho bệnh nhân. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   <br><br>
+
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-10 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px">
+        <div class="" style="width:100%" data-aos="fade-right">
+          <p class="col-xl-11"style="font-size:40px;font-weight:600;font-family: 'Roboto', sans-serif;color:#1a1a1a">Một sự thay đổi trong cách bạn nhìn nhận về sức khỏe của mình.</p>
+
+          <p class="col-xl-11"style="font-size:13px;color:#626567;font-weight:400;font-family: 'Roboto', sans-serif;margin:0px;">Công nghệ có thể thay đổi và cải thiện năng suất của bất kỳ ngành nào, cho dù đó là tài chính, bất động sản hay chăm sóc sức khỏe. <br><br>Giải pháp đề xuất của hệ thống nhằm vào ba lĩnh vực khác nhau của lĩnh vực y tế, bao gồm chẩn đoán chuyên sâu để hỗ trợ các chuyên gia y tế trong việc hỗ trợ quyết định lâm sàng và cung cấp kết quả với thời gian đáp ứng nhanh hơn và độ chính xác cao hơn, chẩn đoán sức khỏe tâm thần với hệ thống nhúng trí tuệ nhân tạo, và tự chẩn đoán thông qua các triệu chứng, kèm theo việc cung cấp đơn thuốc và nhiều hơn nữa.</p>
+
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-10 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:10px">
+        <div class="" style="width:100%" data-aos="fade-in">
+          <img src="{% static 'images/img2.jpg'%}" alt="" style="width:100%;border-radius:20px;">
+         
+        </div>
+      </div>
+    </div>
+
+    <div class="row"  style="margin:50px auto 50px auto;padding:10px">
+      <div class="col-lg-3 col-md-6" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:15px">
+        <div class="" style="width:100%">
+          <p style="font-size:30px;margin:0px;color:#626567;text-align:center;"><i class="bi bi-bag-plus-fill"></i></p>
+          <p style="text-align:center;font-size:15px;color:black;font-weight:500;font-family: 'Roboto', sans-serif;margin:5px;">Chẩn đoán chuyên khoa</p>
+          <hr style="margin:0px;">
+          <p style="text-align:center;font-size:11px;color:#626567;font-weight:400;font-family: 'Roboto', sans-serif;margin:5px;">Chọn trong số các công cụ chẩn đoán thông minh dự đoán bệnh tiểu đường, CVD, bệnh gan & khối u não, với độ chính xác lên tới 90%.</p>
+              <p style="text-align:center;"><a  href="{% url 'diagnosistools'  %}" style="border-radius:30px;font-size:13px;font-weight:400;border:0px;">Tìm hiểu thêm <i class="bi bi-chevron-right"></i></a></p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:15px">
+        <div class="" style="width:100%">
+          <p style="font-size:30px;margin:0px;color:#626567;text-align:center;"><i class="bi bi-bag-plus-fill"></i></p>
+          <p style="text-align:center;font-size:15px;color:black;font-weight:500;font-family: 'Roboto', sans-serif;margin:5px;">Sức khỏe tâm thần</p>
+          <hr style="margin:0px;">
+          <p style="text-align:center;font-size:11px;color:#626567;font-weight:400;font-family: 'Roboto', sans-serif;margin:5px;">Mô hình AI kết hợp giữa Tensorflow & NLP với độ chính xác 86%. Trên cơ sở thông tin của bạn, chúng tôi cung cấp điểm sức khỏe tâm thần theo thang điểm từ 0 đến 100 kèm theo một loạt các đề xuất.</p>
+          <p style="text-align:center;"><a  href="{% url 'mentalhealth'  %}" style="border-radius:30px;font-size:13px;font-weight:400;border:0px;">Tìm hiểu thêm <i class="bi bi-chevron-right"></i></a></p>
+
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:15px">
+        <div class="" style="width:100%">
+          <p style="font-size:30px;margin:0px;color:#626567;text-align:center;"><i class="bi bi-bag-plus-fill"></i></p>
+          <p style="text-align:center;font-size:15px;color:black;font-weight:500;font-family: 'Roboto', sans-serif;margin:5px;">AI tự chẩn đoán</p>
+          <hr style="margin:0px;">
+          <p style="text-align:center;font-size:11px;color:#626567;font-weight:400;font-family: 'Roboto', sans-serif;margin:5px;">Chuyên dự đoán hơn 40 bệnh với độ chính xác 94%. Được xử lý bằng thuật toán SVM mạnh mẽ. Đồng thời đưa ra những gợi ý về thuốc tương ứng với bệnh.</p>
+          <p style="text-align:center;"><a  href="{% url 'healthcheckup'  %}" style="border-radius:30px;font-size:13px;font-weight:400;border:0px;">Tìm hiểu thêm <i class="bi bi-chevron-right"></i></a></p>
+
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;padding:15px">
+        <div class="" style="width:100%">
+          <p style="font-size:30px;margin:0px;color:#626567;text-align:center;"><i class="bi bi-bag-plus-fill"></i></p>
+          <p style="text-align:center;font-size:15px;color:black;font-weight:500;font-family: 'Roboto', sans-serif;margin:5px;">Lên kế hoạch ăn uống</p>
+          <hr style="margin:0px;">
+          <p style="text-align:center;font-size:11px;color:#626567;font-weight:400;font-family: 'Roboto', sans-serif;margin:5px;">Công cụ lập kế hoạch ăn uống cung cấp các đề xuất bổ sung chế độ ăn uống dựa trên các chỉ số sức khỏe do bạn cung cấp. Tích hợp với các thuật toán dựa trên AI.</p>
+          <p style="text-align:center;"><a  href="{% url 'diet_plan'  %}" style="border-radius:30px;font-size:13px;font-weight:400;border:0px;">Tìm hiểu thêm <i class="bi bi-chevron-right"></i></a></p>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,929 @@
+{%  extends 'MAINAPP/home.html' %}
+{% load static %}
+{% block content %}
+<div class="bground1" style="">
+
+  <div class="container" style="margin-left:auto;margin-right:auto;">
+    <br>
+    <p style="text-align:right;"><a  href="{% url 'report'  %}" style="font-size:13px;font-weight:400;font-family: 'Roboto', sans-serif;">Báo cáo vấn đề <i class="bi bi-chevron-right"></i></a></p>
+    <br>
+    <p  style="font-size:25px;font-weight:500;font-family: 'Roboto', sans-serif;text-align :center;margin:0px;">AI chẩn đoán</p>
+    <br>
+   <br>
+   <div class="row">
+     <div class="col-lg-6 col-md-12 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;margin-bottom:20px;">
+       <div style="border-radius:15px;padding:20px;background:white;border:1px solid #CACFD2;width:100%">
+         <p style="font-size:16px;font-weight:500;text-align:center;">Triệu chứng</p>
+         <br>
+         <form method="post" enctype="multipart/form-data" action ="{% url 'healthcheckup_result' %}">
+         {% csrf_token %}
+         <div class="input-group mb-12" >
+           <label for="symptom1" style="font-size:13px;padding:5px 10px 5px 10px;font-family: 'Roboto', sans-serif;color:#626567">Triệu chứng 1</label>
+            <select class="custom-select" name="symptom1" style="border-radius:50px;font-size:13px;margin-bottom:12px;" required>
+             <option  value="0" selected>None</option>
+              <option value="1">Ngứa</option>
+              <option value="3">Nổi mẩn ngứa</option>
+              <option value="4">Nổi mẩn đỏ nốt trên da</option>
+              <option value="4">Hắt xì liên tục</option>
+              <option value="5">Run, lạnh</option>
+              <option value="3">Rốt, rét</option>
+              <option value="3">Đau khớp</option>
+              <option value="5">Đau bụng</option>
+              <option value="3">Tăng acid trong dạ dày</option>
+              <option value="4">Loét lưỡi</option>
+              <option value="3">Teo cơ</option>
+              <option value="5">Buồn nôn</option>
+              <option value="6">Đi tiểu đau rát</option>
+              <option value="0">Tiểu tiện có dấu hiệu xuất huyết</option>
+              <option value="4">Mệt mỏi</option>
+              <option value="3">Tăng cân</option>
+              <option value="4">Lo âu</option>
+              <option value="5">Tay và chân lạnh</option>
+              <option value="3">Thay đổi về tâm lý</option>
+              <option value="3">Giảm cân</option>
+              <option value="5">Bồn chồn, lo lắng</option>
+              <option value="2">Uể oải</option>
+              <option value="6">Xuất hiện đốm trắng trong cổ họng</option>
+              <option value="5">Đường huyết không ổn định</option>
+              <option value="4">Ho</option>
+              <option value="7">Sốt cao</option>
+              <option value="3">Mắt bị lõm</option>
+              <option value="4">Khó thở</option>
+              <option value="3">Đổ mồ hôi nhiều</option>
+              <option value="4">Mất nước</option>
+              <option value="5">Khó tiêu hóa</option>
+              <option value="3">Đau đầu</option>
+              <option value="3">Vàng da</option>
+              <option value="4">Nước tiểu đậm màu</option>
+              <option value="5">Buồn nôn</option>
+              <option value="4">Chán ăn</option>
+              <option value="4">Đau phía sau mắt</option>
+              <option value="3">Đau lưng</option>
+              <option value="4">Táo bón</option>
+              <option value="4">abdominal pain</option>
+              <option value="6">diarrhoea</option>
+              <option value="5">mild fever</option>
+              <option value="4">yellow urine</option>
+              <option value="4">yellowing of eyes</option>
+              <option value="6">acute liver failure</option>
+              <option value="6">fluid overload</option>
+              <option value="7">swelling of stomach</option>
+              <option value="6">swelled lymph nodes</option>
+              <option value="6">malaise</option>
+              <option value="5">blurred and distorted vision</option>
+              <option value="5">phlegm</option>
+              <option value="4">throat irritation</option>
+              <option value="5">redness of eyes</option>
+              <option value="4">sinus pressure</option>
+              <option value="5">runny nose</option>
+              <option value="5">congestion</option>
+              <option value="7">chest pain</option>
+              <option value="7">weakness in limbs</option>
+              <option value="5">fast heart rate</option>
+              <option value="5">pain during bowel movements</option>
+              <option value="6">pain in anal region</option>
+              <option value="5">bloody stool</option>
+              <option value="6">irritation in anus</option>
+              <option value="5">neck pain</option>
+              <option value="4">dizziness</option>
+              <option value="4">cramps</option>
+              <option value="4">bruising</option>
+              <option value="4">obesity</option>
+              <option value="5">swollen legs</option>
+              <option value="5">swollen blood vessels</option>
+              <option value="5">puffy face and eyes</option>
+              <option value="6">enlarged thyroid</option>
+              <option value="5">brittle nails</option>
+              <option value="5">swollen extremeties</option>
+              <option value="4">excessive hunger</option>
+              <option value="5">extra marital contacts</option>
+              <option value="4">drying and tingling lips</option>
+              <option value="4">slurred speech</option>
+              <option value="3">knee pain</option>
+              <option value="2">hip joint pain</option>
+              <option value="2">muscle weakness</option>
+              <option value="4">stiff neck</option>
+              <option value="5">swelling joints</option>
+              <option value="5">movement stiffness</option>
+              <option value="6">spinning movements</option>
+              <option value="4">loss of balance</option>
+              <option value="4">unsteadiness</option>
+              <option value="4">weakness of one body side</option>
+              <option value="3">loss of smell</option>
+              <option value="4">bladder discomfort</option>
+              <option value="0">foul smell ofurine</option>
+              <option value="6">continuous feel of urine</option>
+              <option value="5">passage of gases</option>
+              <option value="4">internal itching</option>
+              <option value="5">toxic look (typhos)</option>
+              <option value="3">depression</option>
+              <option value="2">irritability</option>
+              <option value="2">muscle pain</option>
+              <option value="2">altered sensorium</option>
+              <option value="3">red spots over body</option>
+              <option value="4">belly pain</option>
+              <option value="6">abnormal menstruation</option>
+              <option value="0">dischromic patches</option>
+              <option value="4">watering from eyes</option>
+              <option value="5">increased appetite</option>
+              <option value="4">polyuria</option>
+              <option value="5">family history</option>
+              <option value="4">mucoid sputum</option>
+              <option value="4">rusty sputum</option>
+              <option value="3">lack of concentration</option>
+              <option value="3">visual disturbances</option>
+              <option value="5">receiving blood transfusion</option>
+              <option value="2">receiving unsterile injections</option>
+              <option value="7">coma</option>
+              <option value="6">stomach bleeding</option>
+              <option value="4">distention of abdomen</option>
+              <option value="5">history of alcohol consumption</option>
+              <option value="4">fluid overload</option>
+              <option value="5">blood in sputum</option>
+              <option value="6">prominent veins on calf</option>
+              <option value="4">palpitations</option>
+              <option value="2">painful walking</option>
+              <option value="2">pus filled pimples</option>
+              <option value="2">blackheads</option>
+              <option value="2">scurring</option>
+              <option value="3">skin peeling</option>
+              <option value="2">silver like dusting</option>
+              <option value="2">small dents in nails</option>
+              <option value="2">inflammatory nails</option>
+              <option value="4">blister</option>
+              <option value="2">red sore around nose</option>
+              <option value="3">yellow crust ooze</option>
+              <option value="5">prognosis</option>
+
+
+           </select>
+          </div>
+          <div class="input-group mb-12" >
+            <label for="symptom2" style="font-size:13px;padding:5px 10px 5px 10px;font-family: 'Roboto', sans-serif;color:#626567">Symptom 2</label>
+             <select class="custom-select" name="symptom2" style="border-radius:50px;font-size:13px;margin-bottom:12px;" required>
+              <option  value="0" selected>None</option>
+               <option value="1">Ngứa</option>
+               <option value="3">Nổi mẩn ngứa</option>
+               <option value="4">Nổi mẩn đỏ nốt trên da</option>
+               <option value="4">Hắt xì liên tục</option>
+               <option value="5">Run, lạnh</option>
+               <option value="3">Rốt, rét</option>
+               <option value="3">Đau khớp</option>
+               <option value="5">Đau bụng</option>
+               <option value="3">Tăng acid trong dạ dày</option>
+               <option value="4">Loét lưỡi</option>
+               <option value="3">Teo cơ</option>
+               <option value="5">Buồn nôn</option>
+               <option value="6">Đi tiểu đau rát</option>
+               <option value="0">Tiểu tiện có dấu hiệu xuất huyết</option>
+               <option value="4">Mệt mỏi</option>
+               <option value="3">Tăng cân</option>
+               <option value="4">Lo âu</option>
+               <option value="5">Tay và chân lạnh</option>
+               <option value="3">Thay đổi về tâm lý</option>
+               <option value="3">Giảm cân</option>
+               <option value="5">Bồn chồn, lo lắng</option>
+               <option value="2">Uể oải</option>
+               <option value="6">Xuất hiện đốm trắng trong cổ họng</option>
+               <option value="5">Đường huyết không ổn định</option>
+               <option value="4">Ho</option>
+               <option value="7">Sốt cao</option>
+               <option value="3">Mắt bị lõm</option>
+               <option value="4">Khó thở</option>
+               <option value="3">Đổ mồ hôi nhiều</option>
+               <option value="4">Mất nước</option>
+               <option value="5">Khó tiêu hóa</option>
+               <option value="3">Đau đầu</option>
+               <option value="3">Vàng da</option>
+               <option value="4">Nước tiểu đậm màu</option>
+               <option value="5">Buồn nôn</option>
+               <option value="4">Chán ăn</option>
+               <option value="4">Đau phía sau mắt</option>
+               <option value="3">Đau lưng</option>
+               <option value="4">Táo bón</option>
+               <option value="4">abdominal pain</option>
+               <option value="6">diarrhoea</option>
+               <option value="5">mild fever</option>
+               <option value="4">yellow urine</option>
+               <option value="4">yellowing of eyes</option>
+               <option value="6">acute liver failure</option>
+               <option value="6">fluid overload</option>
+               <option value="7">swelling of stomach</option>
+               <option value="6">swelled lymph nodes</option>
+               <option value="6">malaise</option>
+               <option value="5">blurred and distorted vision</option>
+               <option value="5">phlegm</option>
+               <option value="4">throat irritation</option>
+               <option value="5">redness of eyes</option>
+               <option value="4">sinus pressure</option>
+               <option value="5">runny nose</option>
+               <option value="5">congestion</option>
+               <option value="7">chest pain</option>
+               <option value="7">weakness in limbs</option>
+               <option value="5">fast heart rate</option>
+               <option value="5">pain during bowel movements</option>
+               <option value="6">pain in anal region</option>
+               <option value="5">bloody stool</option>
+               <option value="6">irritation in anus</option>
+               <option value="5">neck pain</option>
+               <option value="4">dizziness</option>
+               <option value="4">cramps</option>
+               <option value="4">bruising</option>
+               <option value="4">obesity</option>
+               <option value="5">swollen legs</option>
+               <option value="5">swollen blood vessels</option>
+               <option value="5">puffy face and eyes</option>
+               <option value="6">enlarged thyroid</option>
+               <option value="5">brittle nails</option>
+               <option value="5">swollen extremeties</option>
+               <option value="4">excessive hunger</option>
+               <option value="5">extra marital contacts</option>
+               <option value="4">drying and tingling lips</option>
+               <option value="4">slurred speech</option>
+               <option value="3">knee pain</option>
+               <option value="2">hip joint pain</option>
+               <option value="2">muscle weakness</option>
+               <option value="4">stiff neck</option>
+               <option value="5">swelling joints</option>
+               <option value="5">movement stiffness</option>
+               <option value="6">spinning movements</option>
+               <option value="4">loss of balance</option>
+               <option value="4">unsteadiness</option>
+               <option value="4">weakness of one body side</option>
+               <option value="3">loss of smell</option>
+               <option value="4">bladder discomfort</option>
+               <option value="0">foul smell ofurine</option>
+               <option value="6">continuous feel of urine</option>
+               <option value="5">passage of gases</option>
+               <option value="4">internal itching</option>
+               <option value="5">toxic look (typhos)</option>
+               <option value="3">depression</option>
+               <option value="2">irritability</option>
+               <option value="2">muscle pain</option>
+               <option value="2">altered sensorium</option>
+               <option value="3">red spots over body</option>
+               <option value="4">belly pain</option>
+               <option value="6">abnormal menstruation</option>
+               <option value="0">dischromic patches</option>
+               <option value="4">watering from eyes</option>
+               <option value="5">increased appetite</option>
+               <option value="4">polyuria</option>
+               <option value="5">family history</option>
+               <option value="4">mucoid sputum</option>
+               <option value="4">rusty sputum</option>
+               <option value="3">lack of concentration</option>
+               <option value="3">visual disturbances</option>
+               <option value="5">receiving blood transfusion</option>
+               <option value="2">receiving unsterile injections</option>
+               <option value="7">coma</option>
+               <option value="6">stomach bleeding</option>
+               <option value="4">distention of abdomen</option>
+               <option value="5">history of alcohol consumption</option>
+               <option value="4">fluid overload</option>
+               <option value="5">blood in sputum</option>
+               <option value="6">prominent veins on calf</option>
+               <option value="4">palpitations</option>
+               <option value="2">painful walking</option>
+               <option value="2">pus filled pimples</option>
+               <option value="2">blackheads</option>
+               <option value="2">scurring</option>
+               <option value="3">skin peeling</option>
+               <option value="2">silver like dusting</option>
+               <option value="2">small dents in nails</option>
+               <option value="2">inflammatory nails</option>
+               <option value="4">blister</option>
+               <option value="2">red sore around nose</option>
+               <option value="3">yellow crust ooze</option>
+               <option value="5">prognosis</option>
+
+
+            </select>
+           </div>
+           <div class="input-group mb-12" >
+             <label for="symptom3" style="font-size:13px;padding:5px 10px 5px 10px;font-family: 'Roboto', sans-serif;color:#626567">Symptom 3</label>
+              <select class="custom-select" name="symptom3" style="border-radius:50px;font-size:13px;margin-bottom:12px;" required>
+               <option  value="0" selected>None</option>
+                <option value="1">Ngứa</option>
+                <option value="3">Nổi mẩn ngứa</option>
+                <option value="4">Nổi mẩn đỏ nốt trên da</option>
+                <option value="4">Hắt xì liên tục</option>
+                <option value="5">Run, lạnh</option>
+                <option value="3">Rốt, rét</option>
+                <option value="3">Đau khớp</option>
+                <option value="5">Đau bụng</option>
+                <option value="3">Tăng acid trong dạ dày</option>
+                <option value="4">Loét lưỡi</option>
+                <option value="3">Teo cơ</option>
+                <option value="5">Buồn nôn</option>
+                <option value="6">Đi tiểu đau rát</option>
+                <option value="0">Tiểu tiện có dấu hiệu xuất huyết</option>
+                <option value="4">Mệt mỏi</option>
+                <option value="3">Tăng cân</option>
+                <option value="4">Lo âu</option>
+                <option value="5">Tay và chân lạnh</option>
+                <option value="3">Thay đổi về tâm lý</option>
+                <option value="3">Giảm cân</option>
+                <option value="5">Bồn chồn, lo lắng</option>
+                <option value="2">Uể oải</option>
+                <option value="6">Xuất hiện đốm trắng trong cổ họng</option>
+                <option value="5">Đường huyết không ổn định</option>
+                <option value="4">Ho</option>
+                <option value="7">Sốt cao</option>
+                <option value="3">Mắt bị lõm</option>
+                <option value="4">Khó thở</option>
+                <option value="3">Đổ mồ hôi nhiều</option>
+                <option value="4">Mất nước</option>
+                <option value="5">Khó tiêu hóa</option>
+                <option value="3">Đau đầu</option>
+                <option value="3">Vàng da</option>
+                <option value="4">Nước tiểu đậm màu</option>
+                <option value="5">Buồn nôn</option>
+                <option value="4">Chán ăn</option>
+                <option value="4">Đau phía sau mắt</option>
+                <option value="3">Đau lưng</option>
+                <option value="4">Táo bón</option>
+                <option value="4">abdominal pain</option>
+                <option value="6">diarrhoea</option>
+                <option value="5">mild fever</option>
+                <option value="4">yellow urine</option>
+                <option value="4">yellowing of eyes</option>
+                <option value="6">acute liver failure</option>
+                <option value="6">fluid overload</option>
+                <option value="7">swelling of stomach</option>
+                <option value="6">swelled lymph nodes</option>
+                <option value="6">malaise</option>
+                <option value="5">blurred and distorted vision</option>
+                <option value="5">phlegm</option>
+                <option value="4">throat irritation</option>
+                <option value="5">redness of eyes</option>
+                <option value="4">sinus pressure</option>
+                <option value="5">runny nose</option>
+                <option value="5">congestion</option>
+                <option value="7">chest pain</option>
+                <option value="7">weakness in limbs</option>
+                <option value="5">fast heart rate</option>
+                <option value="5">pain during bowel movements</option>
+                <option value="6">pain in anal region</option>
+                <option value="5">bloody stool</option>
+                <option value="6">irritation in anus</option>
+                <option value="5">neck pain</option>
+                <option value="4">dizziness</option>
+                <option value="4">cramps</option>
+                <option value="4">bruising</option>
+                <option value="4">obesity</option>
+                <option value="5">swollen legs</option>
+                <option value="5">swollen blood vessels</option>
+                <option value="5">puffy face and eyes</option>
+                <option value="6">enlarged thyroid</option>
+                <option value="5">brittle nails</option>
+                <option value="5">swollen extremeties</option>
+                <option value="4">excessive hunger</option>
+                <option value="5">extra marital contacts</option>
+                <option value="4">drying and tingling lips</option>
+                <option value="4">slurred speech</option>
+                <option value="3">knee pain</option>
+                <option value="2">hip joint pain</option>
+                <option value="2">muscle weakness</option>
+                <option value="4">stiff neck</option>
+                <option value="5">swelling joints</option>
+                <option value="5">movement stiffness</option>
+                <option value="6">spinning movements</option>
+                <option value="4">loss of balance</option>
+                <option value="4">unsteadiness</option>
+                <option value="4">weakness of one body side</option>
+                <option value="3">loss of smell</option>
+                <option value="4">bladder discomfort</option>
+                <option value="0">foul smell ofurine</option>
+                <option value="6">continuous feel of urine</option>
+                <option value="5">passage of gases</option>
+                <option value="4">internal itching</option>
+                <option value="5">toxic look (typhos)</option>
+                <option value="3">depression</option>
+                <option value="2">irritability</option>
+                <option value="2">muscle pain</option>
+                <option value="2">altered sensorium</option>
+                <option value="3">red spots over body</option>
+                <option value="4">belly pain</option>
+                <option value="6">abnormal menstruation</option>
+                <option value="0">dischromic patches</option>
+                <option value="4">watering from eyes</option>
+                <option value="5">increased appetite</option>
+                <option value="4">polyuria</option>
+                <option value="5">family history</option>
+                <option value="4">mucoid sputum</option>
+                <option value="4">rusty sputum</option>
+                <option value="3">lack of concentration</option>
+                <option value="3">visual disturbances</option>
+                <option value="5">receiving blood transfusion</option>
+                <option value="2">receiving unsterile injections</option>
+                <option value="7">coma</option>
+                <option value="6">stomach bleeding</option>
+                <option value="4">distention of abdomen</option>
+                <option value="5">history of alcohol consumption</option>
+                <option value="4">fluid overload</option>
+                <option value="5">blood in sputum</option>
+                <option value="6">prominent veins on calf</option>
+                <option value="4">palpitations</option>
+                <option value="2">painful walking</option>
+                <option value="2">pus filled pimples</option>
+                <option value="2">blackheads</option>
+                <option value="2">scurring</option>
+                <option value="3">skin peeling</option>
+                <option value="2">silver like dusting</option>
+                <option value="2">small dents in nails</option>
+                <option value="2">inflammatory nails</option>
+                <option value="4">blister</option>
+                <option value="2">red sore around nose</option>
+                <option value="3">yellow crust ooze</option>
+                <option value="5">prognosis</option>
+
+
+             </select>
+            </div>
+            <div class="input-group mb-12" >
+              <label for="symptom4" style="font-size:13px;padding:5px 10px 5px 10px;font-family: 'Roboto', sans-serif;color:#626567">Symptom 4</label>
+               <select class="custom-select" name="symptom4" style="border-radius:50px;font-size:13px;margin-bottom:12px;" required>
+                <option  value="0" selected>None</option>
+                 <option value="1">Ngứa</option>
+                 <option value="3">Nổi mẩn ngứa</option>
+                 <option value="4">Nổi mẩn đỏ nốt trên da</option>
+                 <option value="4">Hắt xì liên tục</option>
+                 <option value="5">Run, lạnh</option>
+                 <option value="3">Rốt, rét</option>
+                 <option value="3">Đau khớp</option>
+                 <option value="5">Đau bụng</option>
+                 <option value="3">Tăng acid trong dạ dày</option>
+                 <option value="4">Loét lưỡi</option>
+                 <option value="3">Teo cơ</option>
+                 <option value="5">Buồn nôn</option>
+                 <option value="6">Đi tiểu đau rát</option>
+                 <option value="0">Tiểu tiện có dấu hiệu xuất huyết</option>
+                 <option value="4">Mệt mỏi</option>
+                 <option value="3">Tăng cân</option>
+                 <option value="4">Lo âu</option>
+                 <option value="5">Tay và chân lạnh</option>
+                 <option value="3">Thay đổi về tâm lý</option>
+                 <option value="3">Giảm cân</option>
+                 <option value="5">Bồn chồn, lo lắng</option>
+                 <option value="2">Uể oải</option>
+                 <option value="6">Xuất hiện đốm trắng trong cổ họng</option>
+                 <option value="5">Đường huyết không ổn định</option>
+                 <option value="4">Ho</option>
+                 <option value="7">Sốt cao</option>
+                 <option value="3">Mắt bị lõm</option>
+                 <option value="4">Khó thở</option>
+                 <option value="3">Đổ mồ hôi nhiều</option>
+                 <option value="4">Mất nước</option>
+                 <option value="5">Khó tiêu hóa</option>
+                 <option value="3">Đau đầu</option>
+                 <option value="3">Vàng da</option>
+                 <option value="4">Nước tiểu đậm màu</option>
+                 <option value="5">Buồn nôn</option>
+                 <option value="4">Chán ăn</option>
+                 <option value="4">Đau phía sau mắt</option>
+                 <option value="3">Đau lưng</option>
+                 <option value="4">Táo bón</option>
+                 <option value="4">abdominal pain</option>
+                 <option value="6">diarrhoea</option>
+                 <option value="5">mild fever</option>
+                 <option value="4">yellow urine</option>
+                 <option value="4">yellowing of eyes</option>
+                 <option value="6">acute liver failure</option>
+                 <option value="6">fluid overload</option>
+                 <option value="7">swelling of stomach</option>
+                 <option value="6">swelled lymph nodes</option>
+                 <option value="6">malaise</option>
+                 <option value="5">blurred and distorted vision</option>
+                 <option value="5">phlegm</option>
+                 <option value="4">throat irritation</option>
+                 <option value="5">redness of eyes</option>
+                 <option value="4">sinus pressure</option>
+                 <option value="5">runny nose</option>
+                 <option value="5">congestion</option>
+                 <option value="7">chest pain</option>
+                 <option value="7">weakness in limbs</option>
+                 <option value="5">fast heart rate</option>
+                 <option value="5">pain during bowel movements</option>
+                 <option value="6">pain in anal region</option>
+                 <option value="5">bloody stool</option>
+                 <option value="6">irritation in anus</option>
+                 <option value="5">neck pain</option>
+                 <option value="4">dizziness</option>
+                 <option value="4">cramps</option>
+                 <option value="4">bruising</option>
+                 <option value="4">obesity</option>
+                 <option value="5">swollen legs</option>
+                 <option value="5">swollen blood vessels</option>
+                 <option value="5">puffy face and eyes</option>
+                 <option value="6">enlarged thyroid</option>
+                 <option value="5">brittle nails</option>
+                 <option value="5">swollen extremeties</option>
+                 <option value="4">excessive hunger</option>
+                 <option value="5">extra marital contacts</option>
+                 <option value="4">drying and tingling lips</option>
+                 <option value="4">slurred speech</option>
+                 <option value="3">knee pain</option>
+                 <option value="2">hip joint pain</option>
+                 <option value="2">muscle weakness</option>
+                 <option value="4">stiff neck</option>
+                 <option value="5">swelling joints</option>
+                 <option value="5">movement stiffness</option>
+                 <option value="6">spinning movements</option>
+                 <option value="4">loss of balance</option>
+                 <option value="4">unsteadiness</option>
+                 <option value="4">weakness of one body side</option>
+                 <option value="3">loss of smell</option>
+                 <option value="4">bladder discomfort</option>
+                 <option value="0">foul smell ofurine</option>
+                 <option value="6">continuous feel of urine</option>
+                 <option value="5">passage of gases</option>
+                 <option value="4">internal itching</option>
+                 <option value="5">toxic look (typhos)</option>
+                 <option value="3">depression</option>
+                 <option value="2">irritability</option>
+                 <option value="2">muscle pain</option>
+                 <option value="2">altered sensorium</option>
+                 <option value="3">red spots over body</option>
+                 <option value="4">belly pain</option>
+                 <option value="6">abnormal menstruation</option>
+                 <option value="0">dischromic patches</option>
+                 <option value="4">watering from eyes</option>
+                 <option value="5">increased appetite</option>
+                 <option value="4">polyuria</option>
+                 <option value="5">family history</option>
+                 <option value="4">mucoid sputum</option>
+                 <option value="4">rusty sputum</option>
+                 <option value="3">lack of concentration</option>
+                 <option value="3">visual disturbances</option>
+                 <option value="5">receiving blood transfusion</option>
+                 <option value="2">receiving unsterile injections</option>
+                 <option value="7">coma</option>
+                 <option value="6">stomach bleeding</option>
+                 <option value="4">distention of abdomen</option>
+                 <option value="5">history of alcohol consumption</option>
+                 <option value="4">fluid overload</option>
+                 <option value="5">blood in sputum</option>
+                 <option value="6">prominent veins on calf</option>
+                 <option value="4">palpitations</option>
+                 <option value="2">painful walking</option>
+                 <option value="2">pus filled pimples</option>
+                 <option value="2">blackheads</option>
+                 <option value="2">scurring</option>
+                 <option value="3">skin peeling</option>
+                 <option value="2">silver like dusting</option>
+                 <option value="2">small dents in nails</option>
+                 <option value="2">inflammatory nails</option>
+                 <option value="4">blister</option>
+                 <option value="2">red sore around nose</option>
+                 <option value="3">yellow crust ooze</option>
+                 <option value="5">prognosis</option>
+
+
+              </select>
+             </div>
+             <div class="input-group mb-12" >
+               <label for="symptom5" style="font-size:13px;padding:5px 10px 5px 10px;font-family: 'Roboto', sans-serif;color:#626567">Symptom 5</label>
+                <select class="custom-select" name="symptom5" style="border-radius:50px;font-size:13px;margin-bottom:12px;" required>
+                 <option  value="0" selected>None</option>
+                  <option value="1">Ngứa</option>
+                  <option value="3">Nổi mẩn ngứa</option>
+                  <option value="4">Nổi mẩn đỏ nốt trên da</option>
+                  <option value="4">Hắt xì liên tục</option>
+                  <option value="5">Run, lạnh</option>
+                  <option value="3">Rốt, rét</option>
+                  <option value="3">Đau khớp</option>
+                  <option value="5">Đau bụng</option>
+                  <option value="3">Tăng acid trong dạ dày</option>
+                  <option value="4">Loét lưỡi</option>
+                  <option value="3">Teo cơ</option>
+                  <option value="5">Buồn nôn</option>
+                  <option value="6">Đi tiểu đau rát</option>
+                  <option value="0">Tiểu tiện có dấu hiệu xuất huyết</option>
+                  <option value="4">Mệt mỏi</option>
+                  <option value="3">Tăng cân</option>
+                  <option value="4">Lo âu</option>
+                  <option value="5">Tay và chân lạnh</option>
+                  <option value="3">Thay đổi về tâm lý</option>
+                  <option value="3">Giảm cân</option>
+                  <option value="5">Bồn chồn, lo lắng</option>
+                  <option value="2">Uể oải</option>
+                  <option value="6">Xuất hiện đốm trắng trong cổ họng</option>
+                  <option value="5">Đường huyết không ổn định</option>
+                  <option value="4">Ho</option>
+                  <option value="7">Sốt cao</option>
+                  <option value="3">Mắt bị lõm</option>
+                  <option value="4">Khó thở</option>
+                  <option value="3">Đổ mồ hôi nhiều</option>
+                  <option value="4">Mất nước</option>
+                  <option value="5">Khó tiêu hóa</option>
+                  <option value="3">Đau đầu</option>
+                  <option value="3">Vàng da</option>
+                  <option value="4">Nước tiểu đậm màu</option>
+                  <option value="5">Buồn nôn</option>
+                  <option value="4">Chán ăn</option>
+                  <option value="4">Đau phía sau mắt</option>
+                  <option value="3">Đau lưng</option>
+                  <option value="4">Táo bón</option>
+                  <option value="4">abdominal pain</option>
+                  <option value="6">diarrhoea</option>
+                  <option value="5">mild fever</option>
+                  <option value="4">yellow urine</option>
+                  <option value="4">yellowing of eyes</option>
+                  <option value="6">acute liver failure</option>
+                  <option value="6">fluid overload</option>
+                  <option value="7">swelling of stomach</option>
+                  <option value="6">swelled lymph nodes</option>
+                  <option value="6">malaise</option>
+                  <option value="5">blurred and distorted vision</option>
+                  <option value="5">phlegm</option>
+                  <option value="4">throat irritation</option>
+                  <option value="5">redness of eyes</option>
+                  <option value="4">sinus pressure</option>
+                  <option value="5">runny nose</option>
+                  <option value="5">congestion</option>
+                  <option value="7">chest pain</option>
+                  <option value="7">weakness in limbs</option>
+                  <option value="5">fast heart rate</option>
+                  <option value="5">pain during bowel movements</option>
+                  <option value="6">pain in anal region</option>
+                  <option value="5">bloody stool</option>
+                  <option value="6">irritation in anus</option>
+                  <option value="5">neck pain</option>
+                  <option value="4">dizziness</option>
+                  <option value="4">cramps</option>
+                  <option value="4">bruising</option>
+                  <option value="4">obesity</option>
+                  <option value="5">swollen legs</option>
+                  <option value="5">swollen blood vessels</option>
+                  <option value="5">puffy face and eyes</option>
+                  <option value="6">enlarged thyroid</option>
+                  <option value="5">brittle nails</option>
+                  <option value="5">swollen extremeties</option>
+                  <option value="4">excessive hunger</option>
+                  <option value="5">extra marital contacts</option>
+                  <option value="4">drying and tingling lips</option>
+                  <option value="4">slurred speech</option>
+                  <option value="3">knee pain</option>
+                  <option value="2">hip joint pain</option>
+                  <option value="2">muscle weakness</option>
+                  <option value="4">stiff neck</option>
+                  <option value="5">swelling joints</option>
+                  <option value="5">movement stiffness</option>
+                  <option value="6">spinning movements</option>
+                  <option value="4">loss of balance</option>
+                  <option value="4">unsteadiness</option>
+                  <option value="4">weakness of one body side</option>
+                  <option value="3">loss of smell</option>
+                  <option value="4">bladder discomfort</option>
+                  <option value="0">foul smell ofurine</option>
+                  <option value="6">continuous feel of urine</option>
+                  <option value="5">passage of gases</option>
+                  <option value="4">internal Ngứa</option>
+                  <option value="5">toxic look (typhos)</option>
+                  <option value="3">depression</option>
+                  <option value="2">irritability</option>
+                  <option value="2">muscle pain</option>
+                  <option value="2">altered sensorium</option>
+                  <option value="3">red spots over body</option>
+                  <option value="4">belly pain</option>
+                  <option value="6">abnormal menstruation</option>
+                  <option value="0">dischromic patches</option>
+                  <option value="4">watering from eyes</option>
+                  <option value="5">increased appetite</option>
+                  <option value="4">polyuria</option>
+                  <option value="5">family history</option>
+                  <option value="4">mucoid sputum</option>
+                  <option value="4">rusty sputum</option>
+                  <option value="3">lack of concentration</option>
+                  <option value="3">visual disturbances</option>
+                  <option value="5">receiving blood transfusion</option>
+                  <option value="2">receiving unsterile injections</option>
+                  <option value="7">coma</option>
+                  <option value="6">stomach bleeding</option>
+                  <option value="4">distention of abdomen</option>
+                  <option value="5">history of alcohol consumption</option>
+                  <option value="4">fluid overload</option>
+                  <option value="5">blood in sputum</option>
+                  <option value="6">prominent veins on calf</option>
+                  <option value="4">palpitations</option>
+                  <option value="2">painful walking</option>
+                  <option value="2">pus filled pimples</option>
+                  <option value="2">blackheads</option>
+                  <option value="2">scurring</option>
+                  <option value="3">skin peeling</option>
+                  <option value="2">silver like dusting</option>
+                  <option value="2">small dents in nails</option>
+                  <option value="2">inflammatory nails</option>
+                  <option value="4">blister</option>
+                  <option value="2">red sore around nose</option>
+                  <option value="3">yellow crust ooze</option>
+                  <option value="5">prognosis</option>
+
+
+               </select>
+              </div>
+              <div class="input-group mb-12" >
+                <label for="symptom6" style="font-size:13px;padding:5px 10px 5px 10px;font-family: 'Roboto', sans-serif;color:#626567">Symptom 6</label>
+                 <select class="custom-select" name="symptom6" style="border-radius:50px;font-size:13px;margin-bottom:12px;" required>
+                  <option  value="0" selected>None</option>
+                   <option value="1">Ngứa</option>
+                   <option value="3">Nổi mẩn ngứa</option>
+                   <option value="4">Nổi mẩn đỏ nốt trên da</option>
+                   <option value="4">Hắt xì liên tục</option>
+                   <option value="5">Run, lạnh</option>
+                   <option value="3">Rốt, rét</option>
+                   <option value="3">Đau khớp</option>
+                   <option value="5">Đau bụng</option>
+                   <option value="3">Tăng acid trong dạ dày</option>
+                   <option value="4">Loét lưỡi</option>
+                   <option value="3">Teo cơ</option>
+                   <option value="5">Nôn, ói</option>
+                   <option value="6">Đi tiểu đau rát</option>
+                   <option value="0">Tiểu tiện có dấu hiệu xuất huyết</option>
+                   <option value="4">Mệt mỏi</option>
+                   <option value="3">Tăng cân</option>
+                   <option value="4">Lo âu</option>
+                   <option value="5">Tay và chân lạnh</option>
+                   <option value="3">Thay đổi về tâm lý</option>
+                   <option value="3">Giảm cân</option>
+                   <option value="5">Bồn chồn, lo lắng</option>
+                   <option value="2">Uể oải</option>
+                   <option value="6">Xuất hiện đốm trắng trong cổ họng</option>
+                   <option value="5">Đường huyết không ổn định</option>
+                   <option value="4">Ho</option>
+                   <option value="7">Sốt cao</option>
+                   <option value="3">Mắt bị lõm</option>
+                   <option value="4">Khó thở</option>
+                   <option value="3">Đổ mồ hôi nhiều</option>
+                   <option value="4">Mất nước</option>
+                   <option value="5">Khó tiêu hóa</option>
+                   <option value="3">Đau đầu</option>
+                   <option value="3">Vàng da</option>
+                   <option value="4">Nước tiểu đậm màu</option>
+                   <option value="5">Buồn nôn</option>
+                   <option value="4">Chán ăn</option>
+                   <option value="4">Đau phía sau mắt</option>
+                   <option value="3">Đau lưng</option>
+                   <option value="4">Táo bón</option>
+                   <option value="4">abdominal pain</option>
+                   <option value="6">diarrhoea</option>
+                   <option value="5">mild fever</option>
+                   <option value="4">yellow urine</option>
+                   <option value="4">yellowing of eyes</option>
+                   <option value="6">acute liver failure</option>
+                   <option value="6">fluid overload</option>
+                   <option value="7">swelling of stomach</option>
+                   <option value="6">swelled lymph nodes</option>
+                   <option value="6">malaise</option>
+                   <option value="5">blurred and distorted vision</option>
+                   <option value="5">phlegm</option>
+                   <option value="4">throat irritation</option>
+                   <option value="5">redness of eyes</option>
+                   <option value="4">sinus pressure</option>
+                   <option value="5">runny nose</option>
+                   <option value="5">congestion</option>
+                   <option value="7">chest pain</option>
+                   <option value="7">weakness in limbs</option>
+                   <option value="5">fast heart rate</option>
+                   <option value="5">pain during bowel movements</option>
+                   <option value="6">pain in anal region</option>
+                   <option value="5">bloody stool</option>
+                   <option value="6">irritation in anus</option>
+                   <option value="5">neck pain</option>
+                   <option value="4">dizziness</option>
+                   <option value="4">cramps</option>
+                   <option value="4">bruising</option>
+                   <option value="4">obesity</option>
+                   <option value="5">swollen legs</option>
+                   <option value="5">swollen blood vessels</option>
+                   <option value="5">puffy face and eyes</option>
+                   <option value="6">enlarged thyroid</option>
+                   <option value="5">brittle nails</option>
+                   <option value="5">swollen extremeties</option>
+                   <option value="4">excessive hunger</option>
+                   <option value="5">extra marital contacts</option>
+                   <option value="4">drying and tingling lips</option>
+                   <option value="4">slurred speech</option>
+                   <option value="3">knee pain</option>
+                   <option value="2">hip joint pain</option>
+                   <option value="2">muscle weakness</option>
+                   <option value="4">stiff neck</option>
+                   <option value="5">swelling joints</option>
+                   <option value="5">movement stiffness</option>
+                   <option value="6">spinning movements</option>
+                   <option value="4">loss of balance</option>
+                   <option value="4">unsteadiness</option>
+                   <option value="4">weakness of one body side</option>
+                   <option value="3">loss of smell</option>
+                   <option value="4">bladder discomfort</option>
+                   <option value="0">foul smell ofurine</option>
+                   <option value="6">continuous feel of urine</option>
+                   <option value="5">passage of gases</option>
+                   <option value="4">internal itching</option>
+                   <option value="5">toxic look (typhos)</option>
+                   <option value="3">depression</option>
+                   <option value="2">irritability</option>
+                   <option value="2">muscle pain</option>
+                   <option value="2">altered sensorium</option>
+                   <option value="3">red spots over body</option>
+                   <option value="4">belly pain</option>
+                   <option value="6">abnormal menstruation</option>
+                   <option value="0">dischromic patches</option>
+                   <option value="4">watering from eyes</option>
+                   <option value="5">increased appetite</option>
+                   <option value="4">polyuria</option>
+                   <option value="5">family history</option>
+                   <option value="4">mucoid sputum</option>
+                   <option value="4">rusty sputum</option>
+                   <option value="3">lack of concentration</option>
+                   <option value="3">visual disturbances</option>
+                   <option value="5">receiving blood transfusion</option>
+                   <option value="2">receiving unsterile injections</option>
+                   <option value="7">coma</option>
+                   <option value="6">stomach bleeding</option>
+                   <option value="4">distention of abdomen</option>
+                   <option value="5">history of alcohol consumption</option>
+                   <option value="4">fluid overload</option>
+                   <option value="5">blood in sputum</option>
+                   <option value="6">prominent veins on calf</option>
+                   <option value="4">palpitations</option>
+                   <option value="2">painful walking</option>
+                   <option value="2">pus filled pimples</option>
+                   <option value="2">blackheads</option>
+                   <option value="2">scurring</option>
+                   <option value="3">skin peeling</option>
+                   <option value="2">silver like dusting</option>
+                   <option value="2">small dents in nails</option>
+                   <option value="2">inflammatory nails</option>
+                   <option value="4">blister</option>
+                   <option value="2">red sore around nose</option>
+                   <option value="3">yellow crust ooze</option>
+                   <option value="5">prognosis</option>
+
+
+                </select>
+               </div>
+     <div class="text-center">
+    <br>
+      <button type="submit" value="Submit" class="btn btn-outline-primary" style="border-radius:50px;border-width:2px;font-weight:600;font-size:14px;"> Get Results <i class="bi bi-chevron-double-right"></i></button>
+     </div>
+     </form>
+       </div>
+     </div>
+
+     <div class="col-lg-6 col-md-12 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;margin-bottom:20px;">
+       <div style="border-radius:15px;padding:20px;background:black;width:100%">
+         <p style="color:white;font-size:16px;font-weight:500;text-align:center;">Diagnosis Results</p>
+           <hr color="#1C2833" style="margin:0px 0px 20px 0px">
+         {% if symptom1 == "0" and symptom2 == "0" and symptom3 == "0" and symptom4 == "0" and symptom5 == "0" and symptom6 == "0"  %}
+         <p style="color:#66ff66;text-align:center;font-size:12.5px;">No complications found. You are disease free.</p>
+         <br>
+         <p style="color:#BFC9CA;font-size:11px;">Disclaimer : These outcomes are for quick informational purposes only, Consult your local medical authority for advice.</p>
+
+         {% elif predict  %}
+         <p style="color:white;text-align:center;font-size:14px;">Dear user, you are probably suffering with <label style="font-weight:600;" >{{predict}}</label>.</p>
+         <div class="" style="border:1px solid white;border-radius:15px;padding:10px;">
+           {% for result in results %}
+           <p style="color:white;font-size:14px;font-weight:400;margin-bottom:5px;text-align:center;">Description</p>
+           <p style="white-space: pre-wrap;color:#BFC9CA;font-size:12px;">{{result.disease_description}}</p>
+           <div class="row">
+             <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;">
+               <div class="" style="width:100%">
+                 <p style="color:white;font-size:14px;font-weight:400;margin-bottom:5px;">Precautions</p>
+                 <p style="white-space: pre-wrap;color:#BFC9CA;font-size:12px;">{{result.disease_medication}}</p>
+               </div>
+             </div>
+             <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;">
+               <div class="" style="width:100%">
+                 <p style="color:white;font-size:14px;font-weight:400;margin-bottom:5px;">Medications</p>
+                 <p style="white-space: pre-wrap;color:#BFC9CA;font-size:12px;">{{result.disease_precautions}}</p>
+               </div>
+             </div>
+           </div>
+
+           {% endfor %}
+         </div>
+
+         <br>
+         <p style="color:#BFC9CA;font-size:11px;">Disclaimer : These outcomes are for quick informational purposes only, Consult your local medical authority for advice.</p>
+
+
+         {% else %}
+          <p style="color:#BFC9CA;font-size:12px; text-align:center;">Symptoms Not Provided. Please specify the symptoms for diagnosis. </p>
+         <br>
+         <p style="border:1px solid white;border-radius:15px;padding:20px;color:#BFC9CA;font-size:11px; text-align:center;"><label style="font-size:14px;font-weight:400;">About</label><br>This AI Self-Diagnosis tool with just few user inputs is specialized to predict 40+ diseases with an accuracy of 94%. The tool results are processed with the powerful machine learning model trained with Support Vector Machine. Along with the disease prediction this tool also provide the medication suggestions and precautions corresponding to the disease. </p>
+         {% endif %}
+       </div>
+     </div>
+
+   </div>
+<br>
+   <div class="text-center" style="">
+     <p  style="text-align:center;padding:0px;font-size:13px;color:gray;font-weight:400;font-family: 'Roboto', sans-serif;">Your feedback is important and it help us to improve our features, please share your experience with us. </p>
+     <a class="btn btn-outline-primary" href="{% url 'rating' %}"style="border-radius:30px;border-width:1px;font-size:13px;margin:auto;font-weight:400;padding:4px 8px 4px 8px">Rate Us <i class="bi bi-chevron-double-right"></i></a>
+   </div>
+<br>
+    </div>
+  </div>
+
+{% endblock content %}

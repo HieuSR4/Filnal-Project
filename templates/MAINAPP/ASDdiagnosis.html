@@ -1,0 +1,395 @@
+{%  extends 'MAINAPP/home.html' %}
+{% load static %}
+{% block content %}
+<div>
+   
+    <br>
+    <div class="container">
+        <p style="text-align:right;"><a  href="{% url 'report'  %}" style="font-size:13px;font-weight:400;font-family: 'Roboto', sans-serif;">Báo cáo vấn đề <i class="bi bi-chevron-right"></i></a></p>
+        
+        <p  style="font-size:28px;font-weight:500;font-family: 'Roboto', sans-serif;text-align :center;margin:10px;">Chẩn đoán rối loạn phổ tự kỷ (ASD)</p>
+
+        <p  style="margin-left:auto;margin-right:auto;font-size:13px;font-weight:400;font-family: 'Roboto', sans-serif;text-align :center;" >Tại đây, bạn có thể kiểm tra xem trẻ của mình trong độ tuổi từ (1-3 tuổi) có các triệu chứng ASD hay không. Đọc kỹ các câu hỏi dưới đây và trả lời cho phù hợp.</p>
+        
+           {% if output1 or output1 == 0 %}
+           <div style="background:black;border-radius:20px;padding:40px;">
+            
+            <p style="text-align:center;color:rgb(170, 170, 170);font-weight:500;font-size:15px;">Results </p>
+            <hr color="#161616" style="margin:20px 8px 20px 8px">
+            <p style="text-align:center;color:rgb(255, 238, 87);font-size:16px;font-weight:500">{{ output1 }} </p>
+            <br>
+       
+           <table  class="table table-striped table-borderless  table-sm table-dark" style="font-size:14px;background:black">
+            <thead><tr><th scope="col"> </th><th scope="col">Câu hỏi</th><th scope="col">Kết quả</th></tr></thead>
+            <tbody>
+
+                {% if Q1 == '0' %}
+                <tr><th scope="row">1</th><td>Con bạn có nhìn bạn khi bạn gọi tên bé không?</td><td style="color:green">Tiêu cực</td></tr>
+                {% else %}
+                <tr><th scope="row">1</th><td>Con bạn có nhìn bạn khi bạn gọi tên bé không?</td><td style="color:red">Tích cực</td></tr>
+                {% endif %}
+
+                {% if Q2 == '0' %}
+                <tr><th scope="row">2</th><td>Bạn có dễ dàng giao tiếp bằng mắt với con mình không?</td><td style="color:green">Tiêu cực</td></tr>
+                {% else %}
+                <tr><th scope="row">2</th><td>Bạn có dễ dàng giao tiếp bằng mắt với con mình không?</td><td style="color:red">Tích cực</td></tr>
+                {% endif %}
+
+                {% if Q3 == '0' %}
+                <tr><th scope="row">3</th><td>Con bạn có chỉ tay để biểu thị rằng bé muốn thứ gì đó không? </td><td style="color:green">Tiêu cực</td></tr>
+                {% else %}
+                <tr><th scope="row">3</th><td>Con bạn có chỉ tay để biểu thị rằng bé muốn thứ gì đó không? </td><td style="color:red">Tích cực</td></tr>
+                {% endif %}
+
+                {% if Q4 == '0' %}
+                <tr><th scope="row">4</th><td>Con của bạn có chỉ để chia sẻ sự quan tâm với bạn không? </td><td style="color:green">Tiêu cực</td></tr>
+                {% else %}
+                <tr><th scope="row">4</th><td>Con của bạn có chỉ để chia sẻ sự quan tâm với bạn không? </td><td style="color:red">Tích cực</td></tr>
+                {% endif %}
+
+                {% if Q5 == '0' %}
+                <tr><th scope="row">5</th><td>Con bạn có hay làm các hành động giả vờ không?</td><td style="color:green">Tiêu cực</td></tr>
+                {% else %}
+                <tr><th scope="row">5</th><td>Con bạn có hay làm các hành động giả vờ không?</td><td style="color:red">Tích cực</td></tr>
+                {% endif %}
+
+
+                {% if Q6 == '0' %}
+                <tr><th scope="row">6</th><td>Con của bạn có theo dõi hướng nhìn của bạn không?</td><td style="color:green">Tiêu cực</td></tr>
+                {% else %}
+                <tr><th scope="row">6</th><td>Con của bạn có theo dõi hướng nhìn của bạn không?</td><td style="color:red">Tích cực</td></tr>
+                {% endif %}
+
+                {% if Q7 == '0' %}
+                <tr><th scope="row">7</th><td>Nếu bạn hoặc một người khác trong gia đình rõ ràng đang buồn, con của bạn có thể hiện ra dấu hiệu muốn an ủi họ không?</td><td style="color:green">Tiêu cực</td></tr>
+                {% else %}
+                <tr><th scope="row">7</th><td>Nếu bạn hoặc một người khác trong gia đình rõ ràng đang buồn, con của bạn có thể hiện ra dấu hiệu muốn an ủi họ không?</td><td style="color:red">Tích cực</td></tr>
+                {% endif %}
+
+                {% if Q8 == '0' %}
+                <tr><th scope="row">8</th><td>Bạn mô tả con bạn như thế nào:</td><td style="color:green">Tiêu cực</td></tr>
+                {% else %}
+                <tr><th scope="row">8</th><td>Bạn mô tả con bạn như thế nào:</td><td style="color:red">Tích cực</td></tr>
+                {% endif %}
+
+                {% if Q9 == '0' %}
+                <tr><th scope="row">9</th><td>Con bạn có hay làm các cử chỉ đơn giản không?</td><td style="color:green">Tiêu cực</td></tr>
+                {% else %}
+                <tr><th scope="row">9</th><td>Con bạn có hay làm các cử chỉ đơn giản không?</td><td style="color:red">Tích cực</td></tr>
+                {% endif %}
+
+                {% if Q10 == '0' %}
+                <tr><th scope="row">10</th><td>Con bạn có nhìn chằm chằm vào không gì mà không có mục đích rõ ràng không?</td><td style="color:green">Tiêu cực</td></tr>
+                {% else %}
+                <tr><th scope="row">10</th><td>Con bạn có nhìn chằm chằm vào không gì mà không có mục đích rõ ràng không?</td><td style="color:red">Tích cực</td></tr>
+                {% endif %}
+
+          
+            </tbody>
+          </table>
+
+        </div>
+   
+           {% else %}
+           <form method="post" enctype="multipart/form-data" action ="{% url 'ASDdiagnosis_result' %}">
+            {% csrf_token %}
+
+            <label for="val1" style="font-size:14px;color:black;font-weight:700;margin:5px;margin-top:15px;">1. Con bạn có nhìn bạn khi bạn gọi tên bé không?</label>
+            <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+            <div class="form-check">
+            <input class="form-check-input" value="0" type="radio" name="val1" id="Always"checked >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="Always">Luôn luôn</label>
+            <br>
+            <input class="form-check-input" value="0" type="radio" name="val1" id="Usually" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Usually">Thường xuyên</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val1" id="Sometimes" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Sometimes">Thỉnh thoảng</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val1" id="Rarely" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Rarely">Hiếm khi</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val1" id="Never" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Never">Không bao giờ</label>
+            </div>
+            </div>
+
+            <br>
+
+            <label for="val1" style="font-size:14px;color:black;font-weight:700;margin:5px;margin-top:15px;">2. Bạn có dễ dàng giao tiếp bằng mắt với con mình không?</label>
+            <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+            <div class="form-check">
+            <input class="form-check-input" value="0" type="radio" name="val2" id="Very easy"checked >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="Very easy">Rất dễ</label>
+            <br>
+            <input class="form-check-input" value="0" type="radio" name="val2" id="Quite easy" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Quite easy">Khá dễ</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val2" id="Quite	   difficult" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Quite	   difficult">Khá khó khăn</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val2" id="Very	   difficult" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Very	   difficult">Rất khó khăn</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val2" id="Impossible" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Impossible">Không thể</label>
+            </div>
+            </div>
+
+
+            <br>
+
+            <label for="val1" style="font-size:14px;color:black;font-weight:700;margin:5px;margin-top:15px;">3. Con bạn có chỉ tay để biểu thị rằng bé muốn thứ gì đó không?</label>
+            <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+            <div class="form-check">
+            <input class="form-check-input" value="0" type="radio" name="val3" id="Many	   times	   a	   day	   "checked >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="Many	   times	   a	   day	   ">Nhiều lần trong ngày</label>
+            <br>
+            <input class="form-check-input" value="0" type="radio" name="val3" id="A	   few	   times	   a	   day	   	   " >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   day	   	   ">Một vài lần một ngày</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val3" id="A	   few	   times	   a	   week" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   week">Một vài lần một tuần</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val3" id="Less	   than	   once	   a	   week" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Less	   than	   once	   a	   week">Ít hơn một lần một tuần</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val3" id="Never" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Never">Không bao giờ</label>
+            </div>
+            </div>
+ 
+
+            <br>
+
+
+            <label for="val1" style="font-size:14px;color:black;font-weight:700;margin:5px;margin-top:15px;">4. Con của bạn có chỉ để chia sẻ sự quan tâm với bạn không?</label>
+            <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+            <div class="form-check">
+            <input class="form-check-input" value="0" type="radio" name="val4" id="Many	   times	   a	   day	   "checked >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="Many	   times	   a	   day	   ">Nhiều lần trong ngày</label>
+            <br>
+            <input class="form-check-input" value="0" type="radio" name="val4" id="A	   few	   times	   a	   day	   	   " >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   day	   	   ">Một vài lần một ngày</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val4" id="A	   few	   times	   a	   week" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   week">Một vài lần một tuần</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val4" id="Less	   than	   once	   a	   week" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Less	   than	   once	   a	   week">Ít hơn một lần mỗi tuần</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val4" id="Never" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Never">Không bao giờ</label>
+            </div>
+            </div>
+
+
+            <br>
+
+
+            <label for="val1" style="font-size:14px;color:black;font-weight:700;margin:5px;margin-top:15px;">5. Con bạn có hay làm các hành động giả vờ không?</label>
+            <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+            <div class="form-check">
+            <input class="form-check-input" value="0" type="radio" name="val5" id="Many	   times	   a	   day	   "checked >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="Many	   times	   a	   day	   ">Nhiều lần trong ngày</label>
+            <br>
+            <input class="form-check-input" value="0" type="radio" name="val5" id="A	   few	   times	   a	   day	   	   " >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   day	   	   ">Một vài lần một ngày</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val5" id="A	   few	   times	   a	   week" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   week">Một vài lần một tuần</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val5" id="Less	   than	   once	   a	   week" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Less	   than	   once	   a	   week">Ít hơn một lần mỗi tuần</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val5" id="Never" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Never">Không bao giờ</label>
+            </div>
+            </div>
+
+
+            <br>
+
+
+            <label for="val1" style="font-size:14px;color:black;font-weight:700;margin:5px;margin-top:15px;">6. Con của bạn có theo dõi hướng nhìn của bạn không?</label>
+            <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+            <div class="form-check">
+            <input class="form-check-input" value="0" type="radio" name="val6" id="Many	   times	   a	   day	   "checked >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="Many	   times	   a	   day	   ">Nhiều lần trong ngày</label>
+            <br>
+            <input class="form-check-input" value="0" type="radio" name="val6" id="A	   few	   times	   a	   day	   	   " >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   day	   	   ">Một vài lần một ngày</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val6" id="A	   few	   times	   a	   week" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   week">Một vài lần một tuần</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val6" id="Less	   than	   once	   a	   week" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Less	   than	   once	   a	   week">Ít hơn một lần mỗi tuần</label>
+            <br>
+            <input class="form-check-input" value="1" type="radio" name="val6" id="Never" >
+            <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Never">Không bao giờ</label>
+            </div>
+            </div>
+
+    
+            <br>
+
+
+            <label for="val1" style="font-size:14px;color:black;font-weight:700;margin:5px;margin-top:15px;">7. Nếu bạn hoặc một người khác trong gia đình rõ ràng đang buồn, con của bạn có thể hiện ra dấu hiệu muốn an ủi họ không?</label>
+            <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+            <div class="form-check">
+                <input class="form-check-input" value="0" type="radio" name="val7" id="Always"checked >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="Always">Luôn luôn</label>
+                <br>
+                <input class="form-check-input" value="0" type="radio" name="val7" id="Usually" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Usually">Thường xuyên</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val7" id="Sometimes" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Sometimes">Thỉnh thoảng</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val7" id="Rarely" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Rarely">Hiếm khi</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val7" id="Never" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Never">Không bao giờ</label>
+                </div>
+                </div>
+
+
+                <br>
+
+
+            <label for="val1" style="font-size:14px;color:black;font-weight:700;margin:5px;margin-top:15px;">8. Bạn mô tả con bạn như thế nào:</label>
+            <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+            <div class="form-check">
+                <input class="form-check-input" value="0" type="radio" name="val8" id="Very	   typical	"checked >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="Very	   typical	">Rất điển hình</label>
+                <br>
+                <input class="form-check-input" value="0" type="radio" name="val8" id="Quite	   typical	" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Quite	   typical	">Khá điển hình</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val8" id="Slightly	   unusual	" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Slightly	   unusual	">Hơi không bình thường</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val8" id="Very	   unusual	" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Very	   unusual	">Rất không bình thường</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val8" id="My	   child	   doesn’t	   speak	   	" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="My	   child	   doesn’t	   speak	   	">Con tôi rất ít nói</label>
+                </div>
+                </div>
+
+
+                <br>
+
+
+                <label for="val1" style="font-size:14px;color:black;font-weight:700;margin:5px;margin-top:15px;">9. Con bạn có hay làm các cử chỉ đơn giản không? (Vd: chào tạm biệt,...)</label>
+                <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+                <div class="form-check">
+                <input class="form-check-input" value="0" type="radio" name="val9" id="Many	   times	   a	   day	   "checked >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="Many	   times	   a	   day	   ">Nhiều lần trong ngày</label>
+                <br>
+                <input class="form-check-input" value="0" type="radio" name="val9" id="A	   few	   times	   a	   day	   	   " >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   day	   	   ">Một vài lần một ngày</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val9" id="A	   few	   times	   a	   week" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   week">Một vài lần một tuần</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val9" id="Less	   than	   once	   a	   week" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Less	   than	   once	   a	   week">Ít hơn một lần mỗi tuần</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val9" id="Never" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Never">Không bao giờ</label>
+                </div>
+                </div>
+
+
+                <br>
+
+
+                <label for="val1" style="font-size:14px;color:black;font-weight:700;margin:5px;margin-top:15px;">10. Con bạn có nhìn chằm chằm vào không gì mà không có mục đích rõ ràng không?</label>
+                <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+                <div class="form-check">
+                <input class="form-check-input" value="1" type="radio" name="val10" id="Many	   times	   a	   day	   "checked >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="Many	   times	   a	   day	   ">Nhiều lần trong ngày</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val10" id="A	   few	   times	   a	   day	   	   " >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   day	   	   ">Một vài lần một ngày</label>
+                <br>
+                <input class="form-check-input" value="1" type="radio" name="val10" id="A	   few	   times	   a	   week" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="A	   few	   times	   a	   week">Một vài lần một tuần</label>
+                <br>
+                <input class="form-check-input" value="0" type="radio" name="val10" id="Less	   than	   once	   a	   week" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Less	   than	   once	   a	   week">Ít hơn một lần mỗi tuần</label>
+                <br>
+                <input class="form-check-input" value="0" type="radio" name="val10" id="Never" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="Never">Không bao giờ</label>
+                </div>
+                </div>
+                <br>
+                <label for="val11" style="font-size:14px;color:black;font-weight:700;margin:5px;">Tuổi</label>
+                <input type="number" class="toolinput form-control"name="val11" placeholder="tính bằng tháng" style=" background:white;border:1px solid #CACFD2 ;
+                border-radius:40px;padding:18px;font-size:14px;color:black;margin-bottom:10px;"  required>
+
+                <br>
+                <label for="val12" style="font-size:14px;color:black;font-weight:700;margin:4px;">Giới tính</label>
+                <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+                <div class="form-check">
+                <input class="form-check-input" value="1" type="radio" name="val12" id="male"checked >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="male">Nam</label>
+                <br>
+                <input class="form-check-input" value="0" type="radio" name="val12" id="female" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="female">Nữ</label>
+                </div>
+                </div>
+
+                <br>
+
+                <label for="val13" style="font-size:14px;color:black;font-weight:700;margin:4px;">Con bạn có bị vàng da không></label>
+                <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+                <div class="form-check">
+                <input class="form-check-input" value="1" type="radio" name="val13" id="male"checked >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="male">Có</label>
+                <br>
+                <input class="form-check-input" value="0" type="radio" name="val13" id="female" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="female">Không</label>
+                </div>
+                </div>
+
+                <br>
+                <label for="val14" style="font-size:14px;color:black;font-weight:700;margin:4px;">Có thành viên nào trong gia đình bị mắc chứng rối tự kỷ không?</label>
+                <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+                <div class="form-check">
+                <input class="form-check-input" value="1" type="radio" name="val14" id="male"checked >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="male">Có</label>
+                <br>
+                <input class="form-check-input" value="0" type="radio" name="val14" id="female" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="female">Không</label>
+                </div>
+                </div>
+
+                <br>
+                <label for="val15" style="font-size:14px;color:black;font-weight:700;margin:4px;">Ai đã làm bài kiểm tra này</label>
+                <div class="" style="background:white;padding:10px;border-radius:13px;border:1px solid #CACFD2;">
+                <div class="form-check">
+                <input class="form-check-input" value="1" type="radio" name="val15" id="male"checked >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;"class="form-check-label"  for="male">Thành viên trong gia đình</label>
+                <br>
+                <input class="form-check-input" value="0" type="radio" name="val15" id="female" >
+                <label style="font-size:14px;color:#566573 ;font-weight:400;" class="form-check-label" for="female">Chuyên gia y tế</label>
+                </div>
+                </div>
+                <br>
+    
+    
+
+            <div class="text-center">
+            <button type="submit" value="Submit" class="btn btn-outline-primary" style="border-radius:50px;font-weight:600;border-width:2px;font-size:15px;"> Xem kết quả <i class="bi bi-chevron-double-right"></i></button>
+           </div>
+           </form>
+           {% endif %}
+           <br><br>
+
+    </div>
+</div>
+{% endblock content %}
